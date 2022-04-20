@@ -18,7 +18,7 @@ return new class extends Migration
             $table -> string('phone') -> after('address');
             $table -> string('disk') -> after('phone')-> nullable();
             $table -> string('image') -> after('disk') -> nullable();
-            $table -> integer('status') -> after('image');
+            $table -> integer('status') -> after('image')->default(0);
         });
     }
 
