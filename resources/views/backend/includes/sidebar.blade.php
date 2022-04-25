@@ -9,9 +9,9 @@
           <!-- <img src="{{--auth()->user() -> avatar_url_full --}}"class="img-circle elevation-2" alt="User Image"> -->
         </div>
         <div class="info">
-          <a href="#" class="d-block"> Nguyễn Văn Hoàng
+          <a href="#" class="d-block"> 
             {{--{{Illuminate\Support\Facades\Auth::user()-> name}}--}}
-            {{--auth()-> user()-> name--}}
+            {{auth()-> user()-> name}}
           </a>
         </div>
       </div>
@@ -42,7 +42,7 @@
             </a>
             </li>
             <li class="nav-item ">
-            <a href="{{--route('backend.')--}}" class="nav-link @if(request()-> is('backend/dashboard')) active @endif">
+            <a href="{{route('backend.')}}" class="nav-link @if(request()-> is('backend/dashboard')) active @endif">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                 Dashboard
@@ -62,13 +62,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{-- route('backend.categories.create') --}}" class="nav-link @if(request()-> routeIs('backend.categories.create')) active @endif">
+                <a href="{{route('backend.categories.create')}}" class="nav-link @if(request()-> routeIs('backend.categories.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo mới danh mục</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{-- route('backend.categories.index') --}}" class="nav-link @if(request()-> routeIs('backend.categories.index')) active @endif">
+                <a href="{{route('backend.categories.index')}}" class="nav-link @if(request()-> routeIs('backend.categories.index')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách danh mục</p>
                 </a>

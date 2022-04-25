@@ -8,13 +8,13 @@
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <!-- <form action="{{--route('auth.logout')--}}" method="post">
+        <form action="{{route('auth.logout')}}" method="post">
           @csrf
           <a href="#" class="nav-link"
             onclick="this.closest('form').submit(); return false;">
             Logout
           </a>
-        </form> -->
+        </form>
       </li>
     </ul>
 

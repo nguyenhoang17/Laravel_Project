@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
        
-        $products=['Giày Vans ','Giày Nike'];
+        $products=['Giày Vans 1 ','Giày Vans 2','Giày Vans 3','Giày Vans 4','Giày Vans 5','Giày Vans 6','Giày Vans 7','Giày Vans 8'];
         DB::table('products')->truncate();
         foreach($products as $product)
         {
@@ -33,7 +33,7 @@ class ProductsTableSeeder extends Seeder
                 'user_id'=>1,
                 'shop_id'=> 1,
                 
-                'status'=>'2'
+                'status'=>'1'
             ]);
         }
     }

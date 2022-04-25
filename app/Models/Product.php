@@ -10,6 +10,10 @@ class Product extends Model
 {
     use HasFactory;
 
+    const STATUS_ACTIVE = 1;
+    const STATUS_HIDDEN = -1;
+    const STATUS_SALE = 2;
+
     public function user(){
         return $this-> belongsTo(User::class);
     }

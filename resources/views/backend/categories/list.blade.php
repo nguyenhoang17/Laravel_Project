@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    List Users
+    List Categories
 @endsection
 @section('script')
   <script src="https://kit.fontawesome.com/4829a23a17.js" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 @endsection
 
 @section('content')
-    @if (session('error'))
+    <!-- @if (session('error'))
       <div class="alert alert-danger" role="alert">
       {{ session('error') }}
       </div>
@@ -34,7 +34,7 @@
       <div class="alert alert-success" role="alert">
       {{ session('success') }}
       </div>
-      @endif
+      @endif -->
 
 <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -71,7 +71,7 @@
                     @foreach($categories as $key => $category)
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
-                      <td style= "color: blue"><a href ="{{route('backend.categories.show',$category-> id)}}">{{$category-> name}}</a></td>
+                      <td style= "color: blue"><a href ="{{--route('backend.categories.show',$category-> id)--}}">{{$category-> name}}</a></td>
                       <td>{{$category-> created_at}}</td>
                       <td>{{$category-> updated_at}}</td>
                       <td style="display:flex;">
@@ -81,10 +81,11 @@
                             <input type="hidden" name="_method" value="delete">
                           <button style="margin-left:10px;" type="submit" class= "btn-delete"><i class="fa-solid fa-trash"></i></button>
                           </form>
-                          <!-- <a href="{{route('backend.posts.destroy',['id'=>1])}}" type="button" class= "btn-delete"><i class="fa-solid fa-trash"></i></a> -->
+                          <!-- <a href="{{--route('backend.posts.destroy',['id'=>1])--}}" type="button" class= "btn-delete"><i class="fa-solid fa-trash"></i></a> -->
                       </td>
                     </tr>
                     @endforeach
+                    
                   </tbody>
                 </table>
                 {{$categories -> links()}}

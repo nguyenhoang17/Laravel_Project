@@ -38,7 +38,7 @@
                 <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên danh mục</label>
-                    <input name="name" value="{{old('name')}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
+                    <input name="name" value="{{--old('name')--}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                     @error('name')
                       <div class="alert alert-danger">{{$message}}</div>
                     @enderror
