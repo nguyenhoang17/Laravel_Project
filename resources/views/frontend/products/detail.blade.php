@@ -30,33 +30,67 @@
 						
 						
 						
-					<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1800px, 0px, 0px); transition: all 0.5s ease 0s; width: 3150px;"><div class="owl-item cloned" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div><div class="owl-item cloned" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div><div class="owl-item" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div><div class="owl-item" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div><div class="owl-item active" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div><div class="owl-item cloned" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div><div class="owl-item cloned" style="width: 450px; margin-right: 0px;"><div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
-						</div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="owl-dots" style=""><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div></div></div></div>
+					<div class="owl-stage-outer">
+						<div class="owl-stage" style="transform: translate3d(-1800px, 0px, 0px); transition: all 0.5s ease 0s; width: 3150px;">
+							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item active" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
+								<div class="single-prd-item">
+									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
+								</div>
+							</div>
+					</div>
+				</div>
+				<div class="owl-controls">
+					<div class="owl-nav">
+						<div class="owl-prev" style="display: none;">prev</div>
+						<div class="owl-next" style="display: none;">next</div>
+					</div>
+					<div class="owl-dots" style="">
+						<div class="owl-dot"><span></span></div>
+						<div class="owl-dot"><span></span></div>
+						<div class="owl-dot active"><span></span></div>
+					</div>
+				</div>
+			</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>Faded SkyBlu Denim Jeans</h3>
-						<h2>$149.99</h2>
+						<h3>{{$product-> name}}</h3>
+						<h2>{{$product-> price_sale}}</h2>
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : Household</a></li>
-							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
+							<li><a class="active" href="#"><span>Category</span> : {{$product-> category-> name}}</a></li>
+							<li><a href="#"><span>Availibility</span> : {{$product -> status_text}}</a></li>
 						</ul>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
+						<p>{{$product-> description}}</p>
 						<div class="product_count">
 							<label for="qty">Quantity:</label>
 							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">

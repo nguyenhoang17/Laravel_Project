@@ -14,6 +14,14 @@ class Product extends Model
     const STATUS_HIDDEN = -1;
     const STATUS_SALE = 2;
 
+    protected $statusArr = [
+        '1' => 'Active', 
+    ];
+
+    public function getStatusTextAttribute(){
+        return $this -> statusArr [$this -> status];
+    }
+
     public function user(){
         return $this-> belongsTo(User::class);
     }

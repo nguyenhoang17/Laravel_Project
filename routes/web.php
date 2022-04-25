@@ -24,9 +24,9 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
     //Home
         Route::get('/','HomeController@index' )-> name('home');
     //ProductByCategory
-        Route::get('/productsByCategory','ProductsByCategoryController@index' )-> name('product.category');
+        Route::get('/productsByCategory/{id}','ProductsByCategoryController@productByCategory' )-> name('product.category');
     //ProductDetail
-        Route::get('/productDetail','ProductDetailController@index' )-> name('product.detail');
+        Route::get('/productDetail/{id}','ProductDetailController@productDetail' )-> name('product.detail');
         
 });
 
