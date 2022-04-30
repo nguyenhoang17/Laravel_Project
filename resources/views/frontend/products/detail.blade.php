@@ -85,7 +85,7 @@
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
 						<h3>{{$product-> name}}</h3>
-						<h2>{{$product-> price_sale}}</h2>
+						<h2>{{$product-> price_sale_format}}</h2>
 						<ul class="list">
 							<li><a class="active" href="#"><span>Category</span> : {{$product-> category-> name}}</a></li>
 							<li><a href="#"><span>Availibility</span> : {{$product -> status_text}}</a></li>
@@ -98,7 +98,7 @@
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">Add to Cart</a>
+							<a class="primary-btn" href="{{route('frontend.carts.add',['id' =>$product->id])}}">Add to Cart</a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>

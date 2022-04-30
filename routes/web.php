@@ -27,13 +27,16 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
         Route::get('/productsByCategory/{id}','ProductsByCategoryController@productByCategory' )-> name('product.category');
     //ProductDetail
         Route::get('/productDetail/{id}','ProductDetailController@productDetail' )-> name('product.detail');
+    //Cart
+        Route::get('/carts/index','CartController@index')->name('carts.index');
+        Route::get('/carts/add/{id}','CartController@add')->name('carts.add');
         
 });
 
 Route::prefix('backend')-> name('backend.')-> namespace('Backend')-> group(function(){
     //Dasboard
         Route::get('dashboard','DashboardController@index');
-
+    //Category
         Route::prefix('categories')-> name('categories.')-> group(function(){
             Route::get('/','CategoryController@index')-> name('index');
             // Route::get('/{id}','CategoryController@show')-> name('show');
@@ -43,6 +46,25 @@ Route::prefix('backend')-> name('backend.')-> namespace('Backend')-> group(funct
             Route::put('/{id}','CategoryController@update')-> name('update');
             Route::delete('/{id}', 'CategoryController@destroy')-> name('destroy');
         });
+    //Products
+    Route::prefix('products')-> name('products.')-> group(function(){
+        Route::get('/','ProductController@index')-> name('index');
+        // Route::get('/{id}','CategoryController@show')-> name('show');
+        Route::get('/create','ProductController@create')-> name('create');
+        Route::post('/','ProductController@store')-> name('store');
+        Route::get('/{id}/edit','ProductController@edit')-> name('edit');
+        Route::put('/{id}','ProductController@update')-> name('update');
+        Route::delete('/{id}', 'ProductController@destroy')-> name('destroy');
+    });
+
+     //Users
+     Route::prefix('users')-> name('users.')-> group(function(){
+        Route::get('/','UserController@index')-> name('index');
+        Route::get('/{id}/edit','UserController@edit')-> name('edit');
+        Route::put('/{id}','UserController@update')-> name('update');
+        Route::delete('/{id}', 'UserController@destroy')-> name('destroy');
+    });
+
         
 });
 //Auth

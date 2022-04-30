@@ -22,7 +22,6 @@ return new class extends Migration
             $table -> integer('quantity') -> default(1);
             $table -> decimal('price_origin')-> default(0);
             $table -> decimal('price_sale')-> default(0);
-            $table -> integer('discount_percent') -> default(0);
             $table -> integer('review_count')-> default(0);
             $table -> integer('sell_count')-> default(0);
             $table -> integer('like_count')-> default(0);

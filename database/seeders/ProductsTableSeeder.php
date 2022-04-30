@@ -29,7 +29,6 @@ class ProductsTableSeeder extends Seeder
                 'quantity'=> 10,
                 'price_origin'=> 500000,
                 'price_sale'=> 450000,
-                'discount_percent'=> 10,
                 'user_id'=>1,
                 'shop_id'=> 1,
                 
