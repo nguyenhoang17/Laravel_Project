@@ -119,9 +119,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{-- route('backend.users.create') --}}" class="nav-link @if(request()-> routeIs('backend.users.create')) active @endif">
+                <a href="{{ route('backend.users.create')}}" class="nav-link @if(request()-> routeIs('backend.users.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo mới user</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('backend.users.list.destroy')}}" class="nav-link @if(request()-> routeIs('backend.users.create')) active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách TK bị khóa</p>
                 </a>
               </li>
               

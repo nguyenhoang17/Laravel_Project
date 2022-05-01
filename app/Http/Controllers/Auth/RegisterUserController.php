@@ -26,6 +26,8 @@ class RegisterUserController extends Controller
         $request -> validate([
             'name'=> ['required','string','max: 255'],
             'email'=> ['required','string','email','max: 255','unique:users'],
+            'address'=>['required','string'],
+            'phone'=> ['required','min:11','numeric'],
             'password'=> ['required','confirmed',Rules\Password::defaults()],
             // 'avatar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
         ]);
@@ -42,6 +44,8 @@ class RegisterUserController extends Controller
             }
         $user -> name = $data['name'];
         $user -> email = $data['email'];
+        $user -> address = $data['address'];
+        $user-> phone = $data['phone'];
         $user -> password =Hash::make( $data['password']);
 
         // $user = User::create([

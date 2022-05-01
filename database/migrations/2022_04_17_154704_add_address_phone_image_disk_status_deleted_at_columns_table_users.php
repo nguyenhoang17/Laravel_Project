@@ -20,6 +20,7 @@ return new class extends Migration
             $table -> string('image') -> after('disk') -> nullable();
             $table -> integer('status') -> after('image')->default(0);
             $table->string('role')->after('status')->default('user');
+            $table->softDeletes();
         });
     }
 

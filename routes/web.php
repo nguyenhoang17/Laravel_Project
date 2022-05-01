@@ -60,9 +60,13 @@ Route::prefix('backend')-> name('backend.')-> namespace('Backend')-> group(funct
      //Users
      Route::prefix('users')-> name('users.')-> group(function(){
         Route::get('/','UserController@index')-> name('index');
+        Route::post('/','UserController@store')-> name('store');
+        Route::get('/create','UserController@create')-> name('create');
         Route::get('/{id}/edit','UserController@edit')-> name('edit');
         Route::put('/{id}','UserController@update')-> name('update');
         Route::delete('/{id}', 'UserController@destroy')-> name('destroy');
+        Route::get('/listDestroy', 'UserController@listDestroy')-> name('list.destroy');
+        Route::post('/{id}', 'UserController@restoreUser')-> name('restore');
     });
 
         

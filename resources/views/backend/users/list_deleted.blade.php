@@ -94,11 +94,11 @@
                       <td>{{$user -> created_at}}</td>
                       <td>{{$user -> updated_at}}</td>
                       <td style="display:flex;">
-                          <a href="{{route('backend.users.edit', $user->id)}}" type="button" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                          <form action="{{route('backend.users.destroy', $user->id)}}" method="POST">
+                          
+                          <form action="{{route('backend.users.restore', $user->id)}}" method="POST">
                             @csrf
-                            <input type="hidden" name="_method" value="delete">
-                          <button style="margin-left: 5px;" type="submit" class= "btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                            <!-- <input type="hidden" name="_method" value="delete"> -->
+                          <button style="margin-left: 5px;" type="submit" class= "btn btn-outline-danger">Khôi phục</button>
                           </form>
                       </td>
                     </tr>
