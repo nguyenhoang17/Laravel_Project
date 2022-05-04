@@ -62,15 +62,13 @@
                     <tr>
                       <th>Stt</th>
                       <th>Name</th>
-                      <th>avatar</th>
-                      <th>address</th>
+                      <th>Avatar</th>
+                      <th>Address</th>
                       <th>Email</th>
                       <th>Phone</th>
-                     
-                      <th>email_verified_at</th>
-                      <th>created_at</th>
-                      <th>updated_at</th>
-                      <th>action</th>
+                      <th>Created_at</th>
+                      <th>Updated_at</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -79,18 +77,14 @@
                       <td>@php echo $key + 1 @endphp</td>
                       <td>{{$user -> name}}</td>
                       <td>
-                      @if(!empty($user->avatar))
+                      @if(!empty($user->image))
                         <img src="{{$user -> avatar_url_full }}"
-                        width="100px">
+                        width="100px" height="50px">
                         @endif
-                      </td>
-
                       </td>
                       <td>{{$user -> address}}</td>
                       <td>{{$user -> email}}</td>
                       <td>{{$user -> phone}}</td>
-                      
-                      <td>{{$user -> email_verified_at}}</td>
                       <td>{{$user -> created_at}}</td>
                       <td>{{$user -> updated_at}}</td>
                       <td style="display:flex;">

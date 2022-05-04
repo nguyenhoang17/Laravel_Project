@@ -22,10 +22,15 @@
 @endsection
 
 @section('content')
+
 	<div class="product_image_area">
 		<div class="container">
+			<form action="@if(auth()->check()){{route('frontend.carts.add',['id' =>$product->id])}}
+														 @else{{route('auth.login')}}
+														 @endif">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
+					<form action="">
 					<div class="s_Product_carousel owl-carousel owl-theme owl-loaded">
 						
 						
@@ -93,12 +98,15 @@
 						<p>{{$product-> description}}</p>
 						<div class="product_count">
 							<label for="qty">Quantity:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+							<input type="text" max="{{$product->quantity}}" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst< {{$product->quantity}}) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 1 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="{{route('frontend.carts.add',['id' =>$product->id])}}">Add to Cart</a>
+							<!-- <a class="primary-btn" href="{{--@if(auth()->check()){{route('frontend.carts.add',['id' =>$product->id])}}
+														 @else{{route('auth.login')}}
+														 @endif--}}">Add to Cart</a> -->
+								<button style="border:none;" class="primary-btn" type="submit">Addtocart</button>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
@@ -106,6 +114,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
     <section class="product_description_area">
 		<div class="container">
@@ -217,58 +226,32 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="comment_list">
+								@foreach($comments as $comment)
 								<div class="review_item">
 									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
+										<div class="d-flex" >
+											<img style="border-radius:50%;" width="50px" height="50px" src="http://127.0.0.1:8000/images/{{$comment->user->image}}" alt="">
 										</div>
 										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
+											<h4>{{$comment->user->name}}</h4>
+											<h5>{{$comment->created_at}}</h5>
+											<!-- <a class="reply_btn" href="#">Reply</a> -->
 										</div>
 									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
+									<p>{{$comment->content}}</p>
 								</div>
-								<div class="review_item reply">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>12th Feb, 2018 at 05:56 pm</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
+								@endforeach
+								
 							</div>
 						</div>
 						<div class="col-lg-6">
+							@if(auth()->check())
 							<div class="review_box">
 								<h4>Post a comment</h4>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-									<div class="col-md-12">
+								<form class="row contact_form" action="{{route('frontend.comment.add',$product->id)}}" method="post" id="contactForm" novalidate="novalidate">
+									@csrf
+									
+									<!-- <div class="col-md-12">
 										<div class="form-group">
 											<input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
 										</div>
@@ -282,10 +265,10 @@
 										<div class="form-group">
 											<input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
 										</div>
-									</div>
+									</div> -->
 									<div class="col-md-12">
 										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
+											<textarea class="form-control" name="content" id="message" rows="1" placeholder="Message"></textarea>
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
@@ -293,6 +276,8 @@
 									</div>
 								</form>
 							</div>
+							@else <p>Bạn cần đăng nhập để comment.</p><a href="{{route('auth.login')}}">Đăng Nhập</a>
+							@endif
 						</div>
 					</div>
 				</div>

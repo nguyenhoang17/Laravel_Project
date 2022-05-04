@@ -79,9 +79,9 @@
                       <td>@php echo $key + 1 @endphp</td>
                       <td>{{$user -> name}}</td>
                       <td>
-                      @if(!empty($user->avatar))
+                      @if(!empty($user->image))
                         <img src="{{$user -> avatar_url_full }}"
-                        width="100px">
+                        width="100px" height="50px">
                         @endif
                       </td>
 

@@ -3,14 +3,14 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           
-          {{-- @if(!empty($user->avatar))
-              <img src="{{auth()->user() -> avatar_url_full }}"class="img-circle elevation-2" alt="User Image">
-          @endif --}}
-          <!-- <img src="{{--auth()->user() -> avatar_url_full --}}"class="img-circle elevation-2" alt="User Image"> -->
+         
+          
+           <img src="{{auth()->user() -> avatar_url_full }}"class="img-circle elevation-2" alt="User Image"> 
+          
         </div>
         <div class="info">
           <a href="#" class="d-block"> 
-            {{--{{Illuminate\Support\Facades\Auth::user()-> name}}--}}
+           
             {{auth()-> user()-> name}}
           </a>
         </div>
@@ -96,6 +96,25 @@
                 <a href="{{ route('backend.products.create')}}" class="nav-link @if(request()-> routeIs('backend.posts.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tạo Sản Phẩm</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item @if(request()-> routeIs('backend.categories.*')) menu-open @endif">
+  
+            <a href="#2" class="nav-link @if(request()-> routeIs('backend.categories.*')) active @endif">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản lý bình luận
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('backend.categories.index')}}" class="nav-link @if(request()-> routeIs('backend.categories.index')) active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách bình luận</p>
                 </a>
               </li>
             </ul>

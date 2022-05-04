@@ -36,7 +36,7 @@ class LoginController extends Controller
             //trả về true thì tạo session và redirect tới dashboard
             $request -> session()-> regenerate();
 
-            return redirect()-> intended('backend/dashboard');
+            return redirect()-> intended('/');
         }
              //ngược lại quay lại trang login và hiện thông báo.
             return back()-> withErrors([

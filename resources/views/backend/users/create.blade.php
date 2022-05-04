@@ -28,7 +28,7 @@
 <div class="card">
 <div class="card-body register-card-body">
 <p class="login-box-msg">Register a new membership</p>
-<form action="{{ route('backend.users.store') }}" method="post">
+<form action="{{ route('backend.users.store') }}" method="post" enctype="multipart/form-data">
 @csrf
 
 <div class="input-group mb-3">
@@ -56,6 +56,14 @@
 </div>
 </div>
 <div class="input-group mb-3">
+<input name="role" type="text" class="form-control" placeholder="role">
+<div class="input-group-append">
+<div class="input-group-text">
+<span><i class="fa-solid fa-book"></i></span>
+</div>
+</div>
+</div>
+<div class="input-group mb-3">
 <input name="phone" type="text" class="form-control" placeholder="Phone">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -63,6 +71,17 @@
 </div>
 </div>
 </div>
+
+<div class="form-group">
+<label for="exampleInputFile"></label>
+<div class="input-group">
+<div class="custom-file">
+<input type="file" class="custom-file-input" name="image">
+<label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
+</div>
+</div>
+</div>
+
 <div class="input-group mb-3">
 <input name="password" type="password" class="form-control" placeholder="Password">
 <div class="input-group-append">

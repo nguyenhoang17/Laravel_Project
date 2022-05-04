@@ -46,7 +46,14 @@ class UserController extends Controller
         $user -> email = $data['email'];
         $user -> phone = $data['phone'];
         $user -> address = $data['address'];
+        $user ->role = $data['role'];
         $user -> password =Hash::make( $data['password']);
+        if($request->hasFile('image')){
+            $disk = 'images';
+            $path = $request->file('image')->store('avatars', $disk);
+            $user->disk = $disk;
+            $user->image = $path;
+            }
         $user-> save();
         $request->session()->flash('success', 'Create user successfully');
         return redirect()-> route('backend.users.index');
@@ -88,11 +95,7 @@ class UserController extends Controller
     {
         $data = $request  -> all();
         $user = User::find($id);
-        $user -> name = $data['name'];
-        $user -> email = $data['email'];
-        $user -> phone = $data['phone'];
-        $user -> address = $data['address'];
-        $user -> password =Hash::make( $data['password']);
+        $user ->role = $data['role'];
         $user-> save();
         $request->session()->flash('success', 'Updated user successfully');
         return redirect()-> route('backend.users.index');

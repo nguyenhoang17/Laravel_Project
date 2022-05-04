@@ -3,7 +3,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="/img/logo.png" alt=""></a>
+					<a class="navbar-brand logo_h" href="index.html"><img width="137px" height="50px" src="/img/logo.png" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -53,26 +53,26 @@
 							 @endforeach --}}
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item"><a href="{{route('frontend.carts.index')}}" class="cart"><span class="ti-bag"></span></a></li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
-							{{--<!-- <li class="nav-item"><a href="#" class="cart"><span ><i style="margin-right:-12px;" class="fa-solid fa-user"></i></span></a></li>
+							 <li class="nav-item"><a href="#" class="cart"><span ><i style="margin-right:-12px;" class="fa-solid fa-user"></i></span></a></li>
 							@if(auth()-> check())
 							<li class="nav-item"><a href="#" class="cart"><span style="margin-left: -10px;" >{{ auth()-> user()-> name}}</span>
-							<span><form style="display: inline;" action="{{route('auth.logout')}}" method="post">
+							 <span><form style="display: inline;" action="{{route('auth.logout')}}" method="post">
 								@csrf
 								<a href="#" class=""
 									onclick="this.closest('form').submit(); return false;">
 									/Logout
 								</a>
-								</form>
+								</form> 
+								
 							</span>
 							</li>
 							@else
 							<li style="line-height: 80px;" class="nav-item"><span style="margin-left: -10px;"><a href="{{route('auth.register')}}">Register</a> / <a href="{{route('auth.login')}}">Login</a></span></li>
-							@endif -->
-								--}}
+							@endif 
 						</ul>
 					</div>
 				</div>

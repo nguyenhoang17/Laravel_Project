@@ -26,6 +26,7 @@
         <div class="container">
             <div class="cart_inner">
                 <div class="table-responsive">
+                    
                     <table class="table">
                         <thead>
                             <tr>
@@ -33,11 +34,13 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($products as $product)
                             <tr>
+                            
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
@@ -53,17 +56,23 @@
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="{{$product->qty}}" title="Quantity:" class="input-text qty">
+                                    
+                                    <a href="{{route('frontend.carts.down',['rowId'=>$product->rowId,'qty'=>$product->qty])}}"><i class="fa-solid fa-minus"></i></a>
+                                   
+                                        <input style="text-align: center;padding-left:0;height:30px;" type="text" name="qty" id="sst" maxlength="12" value="{{$product->qty}}" title="Quantity:" class="input-text qty">
                                         <!-- <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button> -->
+                                        <a href="{{route('frontend.carts.add',$product->id)}}"><i class="fa-solid fa-plus"></i></a>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>{{number_format($product->price*$product->qty,0,'.',',')}}</h5>
+                                    <h5>{{number_format($product->price*$product->qty,0,'.',',')}}đ</h5>
                                 </td>
+                                <td><a href="{{route('frontend.carts.remove',$product->rowId)}}"><i class="fa-solid fa-trash"></i></a></td>
+                                
                             </tr>
                            @endforeach
-                            <tr class="bottom_button">
+                            <!-- <tr class="bottom_button">
                                 <td>
                                     <a class="gray_btn" href="#">Update Cart</a>
                                 </td>
@@ -80,10 +89,10 @@
                                         <a class="gray_btn" href="#">Close Coupon</a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td>
-
+                                    <a class="btn btn-danger" style="padding: 10px 10px; border: 1px solid; " href="{{route('frontend.carts.destroy')}}">Update Cart</a>
                                 </td>
                                 <td>
 
@@ -92,10 +101,10 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}đ</h5>
                                 </td>
                             </tr>
-                            <tr class="shipping_area">
+                            <!-- <tr class="shipping_area">
                                 <td>
 
                                 </td>
@@ -128,7 +137,7 @@
                                         <a class="gray_btn" href="#">Update Details</a>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr class="out_button_area">
                                 <td>
 
@@ -142,12 +151,13 @@
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <a class="gray_btn" href="#">Continue Shopping</a>
-                                        <a class="primary-btn" href="#">Proceed to checkout</a>
+                                        <a class="primary-btn" href="{{route('frontend.order.index',auth()->user()->id)}}">Proceed to checkout</a>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                   
                 </div>
             </div>
         </div>

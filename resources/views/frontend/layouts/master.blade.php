@@ -30,6 +30,10 @@
 	<link rel="stylesheet" href="/frontend/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="/frontend/css/magnific-popup.css">
 	<link rel="stylesheet" href="/frontend/css/main.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 	@yield('css')
 </head>
 
@@ -98,6 +102,23 @@
 	<script src="/frontend/js/gmaps.min.js"></script>
 	<script src="/frontend/js/main.js"></script>
 	<script src="https://kit.fontawesome.com/4829a23a17.js" crossorigin="anonymous"></script>
+	
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+  @if(Session::has('error'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.error("{{ session('error') }}");
+  @endif
+
+ 
+</script>
+	
+	
 	@yield('script')
 </body>
 

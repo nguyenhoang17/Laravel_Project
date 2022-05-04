@@ -19,7 +19,7 @@ Route::get('/', function () {
 
     return view('backend.dashboard');
 });
-
+//Frontend
 Route::name('frontend.')-> namespace('Frontend')-> group(function(){
     //Home
         Route::get('/','HomeController@index' )-> name('home');
@@ -27,13 +27,26 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
         Route::get('/productsByCategory/{id}','ProductsByCategoryController@productByCategory' )-> name('product.category');
     //ProductDetail
         Route::get('/productDetail/{id}','ProductDetailController@productDetail' )-> name('product.detail');
+        Route::post('/addComment/{id}','ProductDetailController@addComment')->name('comment.add');
     //Cart
         Route::get('/carts/index','CartController@index')->name('carts.index');
         Route::get('/carts/add/{id}','CartController@add')->name('carts.add');
+        Route::get('/carts/down/{rowId}/{qty}','CartController@down')->name('carts.down');
+        Route::get('/carts/down/{rowId}','CartController@remove')->name('carts.remove');
+        Route::get('/carts/destroy','CartController@destroy')->name('carts.destroy');
+     
+    //Checkout
+        Route::get('/order/index','OrderController@index')-> name('order.index');
+        Route::post('/','OrderController@store')->name('order.store');
+   
         
 });
 
-Route::prefix('backend')-> name('backend.')-> namespace('Backend')-> group(function(){
+Route::prefix('backend')
+-> name('backend.')
+-> namespace('Backend')
+->middleware(['auth','role:admin,admod'])
+-> group(function(){
     //Dasboard
         Route::get('dashboard','DashboardController@index');
     //Category
@@ -58,7 +71,7 @@ Route::prefix('backend')-> name('backend.')-> namespace('Backend')-> group(funct
     });
 
      //Users
-     Route::prefix('users')-> name('users.')-> group(function(){
+     Route::prefix('users')-> name('users.')->middleware('role:admin')->group(function(){
         Route::get('/','UserController@index')-> name('index');
         Route::post('/','UserController@store')-> name('store');
         Route::get('/create','UserController@create')-> name('create');

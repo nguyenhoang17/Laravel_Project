@@ -28,11 +28,11 @@
 <div class="card">
 <div class="card-body register-card-body">
 <p class="login-box-msg">Register a new membership</p>
-<form action="{{ route('backend.users.update',$user->id) }}" method="post">
+<form action="{{ route('backend.users.update',$user->id) }}" method="post" enctype="multipart/form-data">
 @csrf
 <input type="hidden" name="_method" value="put">
 <div class="input-group mb-3">
-<input value="{{$user-> name}}" name="name" type="text" class="form-control" placeholder="Full name">
+<input value="{{$user-> name}}" name="name" type="text" class="form-control" placeholder="Full name" disabled>
 <div class="input-group-append">
 <div class="input-group-text">
 <span class="fas fa-user"></span>
@@ -40,7 +40,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
-<input value="{{$user-> email}}" name="email" type="email" class="form-control" placeholder="Email">
+<input value="{{$user-> email}}" name="email" type="email" class="form-control" placeholder="Email" disabled>
 <div class="input-group-append">
 <div class="input-group-text">
 <span class="fas fa-envelope"></span>
@@ -48,7 +48,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
-<input value="{{$user-> address}}" name="address" type="text" class="form-control" placeholder="Address">
+<input value="{{$user-> address}}" name="address" type="text" class="form-control" placeholder="Address" disabled>
 <div class="input-group-append">
 <div class="input-group-text">
 <span><i class="fa-solid fa-house"></i></span>
@@ -56,15 +56,34 @@
 </div>
 </div>
 <div class="input-group mb-3">
-<input value="{{$user->phone}}" name="phone" type="text" class="form-control" placeholder="Phone">
+<input value="{{$user-> role}}" name="role" type="text" class="form-control" placeholder="Role">
+<div class="input-group-append">
+<div class="input-group-text">
+<span><i class="fa-solid fa-book"></i></span>
+</div>
+</div>
+</div>
+<div class="input-group mb-3">
+<input value="{{$user->phone}}" name="phone" type="text" class="form-control" placeholder="Phone" disabled>
 <div class="input-group-append">
 <div class="input-group-text">
 <span><i class="fa-solid fa-phone"></i></span>
 </div>
 </div>
 </div>
+
+<div class="form-group">
+<label for="exampleInputFile"></label>
+<div class="input-group">
+<div class="custom-file">
+<input value="{{$user->image}}" type="file" class="custom-file-input" name="image" disabled>
+<label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
+</div>
+</div>
+</div>
+
 <div class="input-group mb-3">
-<input value="{{$user->password}}" name="password" type="password" class="form-control" placeholder="Password">
+<input value="{{$user->password}}" name="password" type="password" class="form-control" placeholder="Password" disabled>
 <div class="input-group-append">
 <div class="input-group-text">
 <span class="fas fa-lock"></span>
@@ -72,7 +91,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
-<input value="{{$user-> password}}" name="password_confirmation" type="password" class="form-control" placeholder="Retype password">
+<input value="{{$user-> password}}" name="password_confirmation" type="password" class="form-control" placeholder="Retype password" disabled>
 <div class="input-group-append">
 <div class="input-group-text">
 <span class="fas fa-lock"></span>

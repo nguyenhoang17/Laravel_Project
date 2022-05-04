@@ -36,11 +36,11 @@ class RegisterUserController extends Controller
         
         $user = new User();
        
-        if($request->hasFile('avatar')){
-            $disk = 'public';
-            $path = $request->file('avatar')->store('avatars', $disk);
+        if($request->hasFile('image')){
+            $disk = 'images';
+            $path = $request->file('image')->store('avatars', $disk);
             $user->disk = $disk;
-            $user->avatar = $path;
+            $user->image = $path;
             }
         $user -> name = $data['name'];
         $user -> email = $data['email'];
@@ -48,15 +48,10 @@ class RegisterUserController extends Controller
         $user-> phone = $data['phone'];
         $user -> password =Hash::make( $data['password']);
 
-        // $user = User::create([
-        //     'name'=> $request->name,
-        //     'email'=> $request-> email,
-        //     'password'=> Hash::make($request->password),
-            
-        // ]);
+       
         
             $user -> save();
         Auth::login($user, $remember = true);
-        return redirect('backend/dashboard');
+        return redirect('/');
     }
 }

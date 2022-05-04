@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -43,6 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+      //avatar
+      public function getAvatarUrlFullAttribute(){
+        $url = Storage::disk($this -> disk)-> url($this-> image);
+        return $url;
+    }
 
     public function products(){
         return $this -> hasMany(Product::class);

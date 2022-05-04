@@ -9,7 +9,9 @@
 								</div>
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a href="@if(auth()->check()){{route('frontend.carts.add',['id' =>$product->id])}}
+														 @else{{route('auth.login')}}
+														 @endif" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
 									</a>
