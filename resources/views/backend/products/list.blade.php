@@ -63,7 +63,7 @@
                     <tr>
                       <th>Stt</th>
                       <th>Tên sản phẩm</th>
-                      <!-- <th>Ảnh</th> -->
+                      <th>Ảnh</th>
                       <th>Danh mục</th>
                       <th>Mô tả</th>
                       <th>Số lượng</th>
@@ -84,8 +84,14 @@
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
                       <td style= "color: blue"><a href ="{{--route('backend.categories.show',$category-> id)--}}">{{$product-> name}}</a></td>
+                      <td>
+                      <img src="@if(!empty($product->image))
+                                      {{$product->image->path}}
+                                      @endif
+                                      "width="100px" height="80px">
+                      
+                      </td>
                       <td>{{$product->category-> name}}</td>
-                      <!-- <td></td> -->
                       <td>{{$product->description}}</td>
                       <td>{{$product-> quantity}}</td>
                       <td>{{$product->price_origin_format}}</td>

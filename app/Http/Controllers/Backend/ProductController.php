@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -16,9 +19,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('created_at','desc')->paginate(15);
+        $images = Image::all();
+        
+        $products = Product::with('image')->orderBy('created_at','desc')->paginate(15);
+        // foreach($products as $product){
+
+        // }
         return view('backend.products.list')-> with([
-            'products' => $products
+            'products' => $products,
+            'images' => $images
         ]);
     }
 
@@ -43,6 +52,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
+        // dd($request->only('images'));
         $data = $request-> all();
         $product = new Product();
         $product -> name = $data['name'];
@@ -54,8 +65,24 @@ class ProductController extends Controller
         $product->status = $data['status'];
         $product->user_id=$data['user_id'];
         $product-> save();
+        if($request->hasFile('images')){
+            foreach($request->images as $image){
+                $disk = 'images';
+               $name = time().'_'.$image->getClientOriginalName();
+              
+               $path = Storage::disk($disk)->putFileAs('products',$image,$name);
+               $url = Storage::disk($disk)->url($path);
+               $image = new Image();
+               $image-> name = $name;
+               $image->disk=$disk;
+               $image->path= $url;
+               $image->product_id = $product->id;
+               $image -> save();
+               
+            }
+        }
         $request->session()->flash('success', 'Created product successfully');
-        // dd($product);
+        
         return redirect()->route('backend.products.index');
 
     }
@@ -81,9 +108,12 @@ class ProductController extends Controller
     {
         $categories=Category::get();
         $product = Product::find($id);
+        $images = Image::where('product_id','=',$id)->get();
+        dd($images);
         return view('backend.products.edit')-> with([
             'product'=> $product,
-            'categories'=>$categories
+            'categories'=>$categories,
+            'images'=>$images
         ]);
     }
 
@@ -108,6 +138,20 @@ class ProductController extends Controller
         $product->status = $data['status'];
         $product->user_id=$data['user_id'];
         $product-> save();
+        if($request->hasFile('images')){
+            foreach($request->images as $image){
+                $disk = 'images';
+               $name = time().'_'.$image->getClientOriginalName();
+              
+               $path = Storage::disk($disk)->putFileAs('products',$image,$name);
+               $image = new Image();
+               $image-> name = $name;
+               $image->disk=$disk;
+               $image->path= $path;
+               $image->product_id = $product->id;
+               $image -> save();
+            }
+        }
         $request->session()->flash('success', 'Created product successfully');
         // dd($product);
         return redirect()->route('backend.products.index');
@@ -123,6 +167,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::find($id)->delete($id);
+        Image::where('product_id','=',$id)->delete();
         return redirect()-> route('backend.products.index')->with('success', 'Deleted category successfully');
     }
 }

@@ -17,14 +17,14 @@ class Product extends Model
    
 
     protected $statusArr = [
-        '1' => 'Còn Hàng', 
+        '1'=>'Còn Hàng', 
         '2'=>'Hết hàng',
         '3'=>'Ngừng bán'
     
 
     ];
     public static $statusArr2 = [
-        '1' => 'Còn Hàng', 
+        '1'=>'Còn Hàng', 
         '2'=>'Hết hàng',
         '3'=>'Ngừng bán'
     
@@ -38,45 +38,48 @@ class Product extends Model
     }
 
     public function getStatusTextAttribute(){
-        return $this -> statusArr [$this -> status];
+        return $this->statusArr [$this->status];
     }
 
     public function getPriceSaleFormatAttribute(){
-        return number_format($this-> price_sale,0,'','.').'đ';
+        return number_format($this->price_sale,0,'','.').'đ';
     }
 
     public function getPriceOriginFormatAttribute(){
-        return number_format($this-> price_origin,0,'','.').'đ';
+        return number_format($this->price_origin,0,'','.').'đ';
     }
 
     public function user(){
-        return $this-> belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function shop(){
-        return $this-> belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function images(){
-        return $this-> HasMany(Product::class);
+        return $this->hasMany(Image::class,'product_id');
     }
 
     public function category(){
-        return $this-> belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function brand(){
-        return $this-> belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
     public function comments(){
-        return $this-> HasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function reviews(){
-        return $this-> HasMany(Review::class);
+        return $this->hasMany(Review::class);
     }
 
     public function orders(){
-        return $this-> belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'price')->withTimestamps();
+    }
+    public function image(){
+        return $this->hasOne(Image::class,'product_id');
     }
 }

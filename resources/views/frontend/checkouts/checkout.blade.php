@@ -105,6 +105,9 @@
                                 <li><a href="#">Product <span>Total</span></a></li>
                                 @foreach($products as $product)
                                 <input type="hidden" value="{{$product->id}}" name="product_id[]">
+                                <input type="hidden" value="{{$product->qty}}" name="quantity">
+                                <input type="hidden" value="{{$product->price}}" name="price">
+
                                 <li><a href="#">{{$product -> name}} <span class="middle">x {{$product->qty}}</span> <span class="last">{{$product->price}}</span></a></li>
                                 @endforeach
                             </ul>
@@ -136,7 +139,7 @@
                                 <label for="f-option4">I’ve read and accept the </label>
                                 <a href="#">terms &amp; conditions*</a>
                             </div>
-                            <button type="submit" style="width:100%; border:none;">Proceed to Paypal</button>
+                            <button class="primary-btn" type="submit" style="width:100%; border:none;">Proceed to Paypal</button>
                         </div>
                         </form>
                     </div>

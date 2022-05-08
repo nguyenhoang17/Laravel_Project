@@ -19,7 +19,7 @@
 											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 										<div class="add-bag d-flex align-items-center">
 											<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-											<span class="add-text text-uppercase">Add to Bag</span>
+											<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
 										</div>
 									</div>
 								</div>
@@ -38,7 +38,7 @@
 											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 										<div class="add-bag d-flex align-items-center">
 											<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-											<span class="add-text text-uppercase">Add to Bag</span>
+											<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
 										</div>
 									</div>
 								</div>
@@ -65,8 +65,8 @@
 							<div class="f-icon">
 								<img src="/img/features/f-icon1.png" alt="">
 							</div>
-							<h6>Free Delivery</h6>
-							<p>Free Shipping on all order</p>
+							<h6>Miễn phí giao hàng</h6>
+							<p>Miễn phí cho tất cả đơn hàng</p>
 						</div>
 					</div>
 					<!-- single features -->
@@ -75,8 +75,8 @@
 							<div class="f-icon">
 								<img src="/img/features/f-icon2.png" alt="">
 							</div>
-							<h6>Return Policy</h6>
-							<p>Free Shipping on all order</p>
+							<h6>Chính sách hoàn trả</h6>
+							<p>Miễn phí cho tất cả đơn hàng</p>
 						</div>
 					</div>
 					<!-- single features -->
@@ -85,8 +85,8 @@
 							<div class="f-icon">
 								<img src="/img/features/f-icon3.png" alt="">
 							</div>
-							<h6>24/7 Support</h6>
-							<p>Free Shipping on all order</p>
+							<h6>Hỗ trợ 24/7</h6>
+							<p>Miễn phí cho tất cả đơn hàng</p>
 						</div>
 					</div>
 					<!-- single features -->
@@ -95,8 +95,8 @@
 							<div class="f-icon">
 								<img src="/img/features/f-icon4.png" alt="">
 							</div>
-							<h6>Secure Payment</h6>
-							<p>Free Shipping on all order</p>
+							<h6>Thanh toán an toàn</h6>
+							<p>Miễn phí cho tất cả đơn hàng</p>
 						</div>
 					</div>
 				</div>
@@ -180,7 +180,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>Latest Products</h1>
+							<h1>Sản phẩm mới nhất</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore
 								magna aliqua.</p>
@@ -203,7 +203,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>Coming Products</h1>
+							<h1>Sản phẩm bán chạy</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore
 								magna aliqua.</p>
@@ -229,31 +229,31 @@
 				<div class="col-lg-6 no-padding exclusive-left">
 					<div class="row clock_sec clockdiv" id="clockdiv">
 						<div class="col-lg-12">
-							<h1>Exclusive Hot Deal Ends Soon!</h1>
+							<h1>Ưu đãi sắp kết thúc!</h1>
 							<p>Who are in extremely love with eco friendly system.</p>
 						</div>
 						<div class="col-lg-12">
 							<div class="row clock-wrap">
 								<div class="col clockinner1 clockinner">
 									<h1 class="days">150</h1>
-									<span class="smalltext">Days</span>
+									<span class="smalltext">Ngày</span>
 								</div>
 								<div class="col clockinner clockinner1">
 									<h1 class="hours">23</h1>
-									<span class="smalltext">Hours</span>
+									<span class="smalltext">Giờ</span>
 								</div>
 								<div class="col clockinner clockinner1">
 									<h1 class="minutes">47</h1>
-									<span class="smalltext">Mins</span>
+									<span class="smalltext">Phút</span>
 								</div>
 								<div class="col clockinner clockinner1">
 									<h1 class="seconds">59</h1>
-									<span class="smalltext">Secs</span>
+									<span class="smalltext">Giây</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<a href="" class="primary-btn">Shop Now</a>
+					<a href="" class="primary-btn">Mua ngay</a>
 				</div>
 				<div class="col-lg-6 no-padding exclusive-right">
 					<div class="active-exclusive-product-slider">
@@ -269,7 +269,7 @@
 									for Sports person</h4>
 								<div class="add-bag d-flex align-items-center justify-content-center">
 									<a class="add-btn" href=""><span class="ti-bag"></span></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
+									<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
 								</div>
 							</div>
 						</div>
@@ -285,7 +285,7 @@
 									for Sports person</h4>
 								<div class="add-bag d-flex align-items-center justify-content-center">
 									<a class="add-btn" href=""><span class="ti-bag"></span></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
+									<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
 								</div>
 							</div>
 						</div>
@@ -326,7 +326,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-6 text-center">
 					<div class="section-title">
-						<h1>Deals of the Week</h1>
+						<h1>Ưu đãi trong tuần</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
 							magna aliqua.</p>
 					</div>

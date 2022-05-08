@@ -9,11 +9,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Shop Category page</h1>
+					<h1>Trang danh mục sản phẩm</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Fashon Category</a>
+						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Cửa hàng<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Danh mục sản phẩm</a>
 					</nav>
 				</div>
 			</div>
@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="col-xl-3 col-lg-4 col-md-5">
 				<div class="sidebar-categories">
-					<div class="head">Browse Categories</div>
+					<div class="head">Danh mục</div>
 					<ul class="main-categories">
 						@foreach($categories as $category)
 							@include('frontend.products.components.categories_item',[
@@ -38,7 +38,7 @@
 				<div class="sidebar-filter mt-50">
 					<div class="top-filter-head">Product Filters</div>
 					<div class="common-filter">
-						<div class="head">Brands</div>
+						<div class="head">Nhãn hiệu</div>
 						<form action="#">
 							<ul>
 								<li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
@@ -49,7 +49,7 @@
 							</ul>
 						</form>
 					</div>
-					<div class="common-filter">
+					<!-- <div class="common-filter">
 						<div class="head">Color</div>
 						<form action="#">
 							<ul>
@@ -62,8 +62,8 @@
 								<li class="filter-list"><input class="pixel-radio" type="radio" id="spacegrey" name="color"><label for="spacegrey">Spacegrey<span>(19)</span></label></li>
 							</ul>
 						</form>
-					</div>
-					<div class="common-filter">
+					</div> -->
+					<!-- <div class="common-filter">
 						<div class="head">Price</div>
 						<div class="price-range-area">
 							<div id="price-range" class="noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-origin" style="left: 10%;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="50.0" aria-valuenow="10.0" aria-valuetext="500.00" style="z-index: 5;"></div></div><div class="noUi-connect" style="left: 10%; right: 50%;"></div><div class="noUi-origin" style="left: 50%;"><div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="10.0" aria-valuemax="100.0" aria-valuenow="50.0" aria-valuetext="4000.00" style="z-index: 6;"></div></div></div></div>
@@ -76,7 +76,7 @@
 								<div id="upper-value">4000.00</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<div class="col-xl-9 col-lg-8 col-md-7">
@@ -152,7 +152,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-6 text-center">
 					<div class="section-title">
-						<h1>Deals of the Week</h1>
+						<h1>Ưu đãi trong tuần</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
 							magna aliqua.</p>
 					</div>

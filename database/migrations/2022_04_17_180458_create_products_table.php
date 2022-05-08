@@ -20,8 +20,8 @@ return new class extends Migration
             $table -> integer('category_id');
             $table -> string('description') -> nullable();
             $table -> integer('quantity') -> default(1);
-            $table -> decimal('price_origin')-> default(0);
-            $table -> decimal('price_sale')-> default(0);
+            $table -> decimal('price_origin',13,2)-> default(0);
+            $table -> decimal('price_sale',13,2)-> default(0);
             $table -> integer('review_count')-> default(0);
             $table -> integer('sell_count')-> default(0);
             $table -> integer('like_count')-> default(0);

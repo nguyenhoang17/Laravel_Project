@@ -14,16 +14,16 @@
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						 <ul class="nav navbar-nav menu_nav ml-auto">
 
-							<li class="nav-item active"><a class="nav-link" href="{{route('frontend.home')}}">Home</a></li>
+							<li class="nav-item active"><a class="nav-link" href="{{route('frontend.home')}}">Trang chủ</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
+								 aria-expanded="false">Cửa hàng</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="{{route('frontend.product.category',1)}}">Shop Category</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('frontend.product.category',1)}}">Danh mục sản phẩm</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-product.html">Chi tiết sản phẩm</a></li>
+									<li class="nav-item"><a class="nav-link" href="checkout.html">Thanh toán</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+									<!-- <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li> -->
 								</ul>
 							</li>
 							<!-- <li class="nav-item submenu dropdown">
@@ -34,7 +34,7 @@
 									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
 								</ul>
 							</li> -->
-							<li class="nav-item submenu dropdown">
+							<!-- <li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Pages</a>
 								<ul class="dropdown-menu">
@@ -42,15 +42,15 @@
 									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
 									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 								</ul>
-							</li>
+							</li> -->
 							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 							
 
 							 <!-- Ap dung cache-->
 
-							 {{-- @foreach($menus as $item)
+							 <!-- {{-- @foreach($menus as $item)
 								 <li class="nav-item active"><a class="nav-link" href="index.html">{{$item-> name}}</a></li>
-							 @endforeach --}}
+							 @endforeach --}} -->
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="{{route('frontend.carts.index')}}" class="cart"><span class="ti-bag"></span></a></li>
@@ -64,14 +64,14 @@
 								@csrf
 								<a href="#" class=""
 									onclick="this.closest('form').submit(); return false;">
-									/Logout
+									/Đăng xuất
 								</a>
 								</form> 
 								
 							</span>
 							</li>
 							@else
-							<li style="line-height: 80px;" class="nav-item"><span style="margin-left: -10px;"><a href="{{route('auth.register')}}">Register</a> / <a href="{{route('auth.login')}}">Login</a></span></li>
+							<li style="line-height: 80px;" class="nav-item"><span style="margin-left: -10px;"><a href="{{route('auth.register')}}">Đăng ký</a> / <a href="{{route('auth.login')}}">Đăng nhập</a></span></li>
 							@endif 
 						</ul>
 					</div>

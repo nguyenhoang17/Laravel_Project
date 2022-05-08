@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->decimal('total');
+            $table->decimal('total',13,2);
             $table->integer('status')-> default(1);
             $table->timestamps();
         });

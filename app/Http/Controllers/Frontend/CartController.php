@@ -11,23 +11,31 @@ class CartController extends Controller
 {
     public function index(){
         $products = Cart::content();
-        // dd($products);
+        $imgProduct = Product::get();
+        // dd($imgProduct);
         return view('frontend.carts.cart')-> with([
             'products'=> $products,
+            'imgProduct'=>$imgProduct
         ]);
         
     }
 
     public function add(Request $request, $id){
         $data = $request->all();
+        if(!empty($data['qty'])){
+            $qty = $data['qty'];
+        }else{
+            $qty = 1;
+        }
         $product = Product::find($id);
-        if($data['qty']> $product->quantity){
+        if($qty>$product->quantity){
             $request->session()->flash('error', 'Mặt hàng chỉ còn '.$product->quantity.' sản phẩm');
             return redirect()->route('frontend.product.detail',$id);
             
         }
         else{
-        Cart::add($product->id, $product->name, $data['qty'], $product->price_origin);
+           
+        Cart::add($product->id, $product->name, $qty, $product->price_origin);
         return redirect()->route('frontend.carts.index');
         }
     }

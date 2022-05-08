@@ -9,11 +9,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Shop Category page</h1>
+					<h1>Trang giỏ hàng</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Cart</a>
+						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Cửa hàng<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Giỏ hàng</a>
 					</nav>
 				</div>
 			</div>
@@ -30,11 +30,11 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">action</th>
+                                <th scope="col">Sản phẩm</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Thành tiền</th>
+                                <th scope="col">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +44,13 @@
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="/img/cart.jpg" alt="">
+                                            
+                                            <img width="150px" height="110px" src=" @foreach($imgProduct as $img)
+                                                                                        @if($product->id == $img->id && !empty($img->image))
+                                                                                            {{$img->image->path}}
+                                                                                        @endif
+                                                                                    @endforeach" alt="">
+                                            
                                         </div>
                                         <div class="media-body">
                                             <p>{{$product-> name}}</p>
@@ -92,13 +98,13 @@
                             </tr> -->
                             <tr>
                                 <td>
-                                    <a class="btn btn-danger" style="padding: 10px 10px; border: 1px solid; " href="{{route('frontend.carts.destroy')}}">Update Cart</a>
+                                    <a class="btn btn-danger" style="padding: 10px 10px; border: 1px solid; " href="{{route('frontend.carts.destroy')}}">Cập nhật giỏ hàng</a>
                                 </td>
                                 <td>
 
                                 </td>
                                 <td>
-                                    <h5>Subtotal</h5>
+                                    <h5>Tổng tiền</h5>
                                 </td>
                                 <td>
                                     <h5>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}đ</h5>
@@ -150,8 +156,8 @@
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Continue Shopping</a>
-                                        <a class="primary-btn" href="{{route('frontend.order.index',auth()->user()->id)}}">Proceed to checkout</a>
+                                        <a class="gray_btn" href="#">Tiếp tục mua sắm</a>
+                                        <a class="primary-btn" href="{{route('frontend.order.index',auth()->user()->id)}}">Đặt hàng</a>
                                     </div>
                                 </td>
                             </tr>

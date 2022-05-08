@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $latest_products = Product::where('status',Product::STATUS_ACTIVE)->limit(8)-> get();
+        $latest_products = Product::where('status',Product::STATUS_ACTIVE)->limit(8)->orderBy('created_at','DESC')-> get();
         $coming_products = Product::where('status',Product::STATUS_ACTIVE)->limit(8)-> get();
         return view('frontend.home.index')-> with([
             'latest_products'=> $latest_products,

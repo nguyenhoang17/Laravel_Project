@@ -43,6 +43,11 @@
                     <input name="name" type="text" value="{{$product->name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                    
                   </div>
+                  <div class="form-group col-6">
+                      <label for="exampleInputPassword1">Ảnh</label>
+                     <input value="{{}}" multiple class="form-control" type="file" name="images[]">
+                     
+                    </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Mô tả</label>
                     <textarea class="col-12"  name="description" id="text_area" cols="30" rows="10">{{$product->description}}</textarea>

@@ -9,11 +9,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Product Details Page</h1>
+					<h1>Trang chi tiết sản phẩm</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-						<a href="single-product.html">product-details</a>
+						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Cửa hàng<span class="lnr lnr-arrow-right"></span></a>
+						<a href="single-product.html">Chi tiết sản phẩm</a>
 					</nav>
 				</div>
 			</div>
@@ -31,60 +31,12 @@
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<form action="">
-					<div class="s_Product_carousel owl-carousel owl-theme owl-loaded">
-						
-						
-						
-					<div class="owl-stage-outer">
-						<div class="owl-stage" style="transform: translate3d(-1800px, 0px, 0px); transition: all 0.5s ease 0s; width: 3150px;">
-							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-							<div class="owl-item" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-							<div class="owl-item" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-							<div class="owl-item active" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-							<div class="owl-item cloned" style="width: 450px; margin-right: 0px;">
-								<div class="single-prd-item">
-									<img class="img-fluid" src="/img/category/s-p1.jpg" alt="">
-								</div>
-							</div>
-					</div>
-				</div>
-				<div class="owl-controls">
-					<div class="owl-nav">
-						<div class="owl-prev" style="display: none;">prev</div>
-						<div class="owl-next" style="display: none;">next</div>
-					</div>
-					<div class="owl-dots" style="">
-						<div class="owl-dot"><span></span></div>
-						<div class="owl-dot"><span></span></div>
-						<div class="owl-dot active"><span></span></div>
-					</div>
-				</div>
+					<div class="s_Product_carousel ">
+						@foreach($images as $image)
+						<div class="single-prd-item">
+							<img class="img-fluid" src="{{$image->path}}" alt="">
+						</div>
+						@endforeach
 			</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
@@ -120,16 +72,16 @@
 		<div class="container">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
+					<a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mô tả</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Specification</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Comments</a>
+					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
+					<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
@@ -247,7 +199,7 @@
 						<div class="col-lg-6">
 							@if(auth()->check())
 							<div class="review_box">
-								<h4>Post a comment</h4>
+								<h4>Thêm bình luận</h4>
 								<form class="row contact_form" action="{{route('frontend.comment.add',$product->id)}}" method="post" id="contactForm" novalidate="novalidate">
 									@csrf
 									

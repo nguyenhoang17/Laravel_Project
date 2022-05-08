@@ -61,6 +61,11 @@
                       </select>
                      
                     </div>
+                    <div class="form-group col-6">
+                      <label for="exampleInputPassword1">Ảnh</label>
+                     <input multiple class="form-control" type="file" name="images[]">
+                     
+                    </div>
                     <div class="row">
                         <div class="form-group col-3">
                         <label for="exampleInputPassword1">Số lượng</label>

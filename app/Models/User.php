@@ -52,18 +52,18 @@ class User extends Authenticatable
     }
 
     public function products(){
-        return $this -> hasMany(Product::class);
+        return $this->hasMany(Product::class);
     }
 
     public function comments(){
-        return $this -> hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function reviews(){
-        return $this -> hasMany(Review::class);
+        return $this->hasMany(Review::class);
     }
 
     public function orders(){
-        return $this -> hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
 }

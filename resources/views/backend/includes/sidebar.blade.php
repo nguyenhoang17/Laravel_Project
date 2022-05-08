@@ -100,9 +100,9 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item @if(request()-> routeIs('backend.categories.*')) menu-open @endif">
+          <li class="nav-item @if(request()-> routeIs('backend.comments.*')) menu-open @endif">
   
-            <a href="#2" class="nav-link @if(request()-> routeIs('backend.categories.*')) active @endif">
+            <a href="#2" class="nav-link @if(request()-> routeIs('backend.comments.*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Quản lý bình luận
@@ -112,7 +112,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('backend.categories.index')}}" class="nav-link @if(request()-> routeIs('backend.categories.index')) active @endif">
+                <a href="{{route('backend.comments.index')}}" class="nav-link @if(request()-> routeIs('backend.comments.index')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách bình luận</p>
                 </a>
