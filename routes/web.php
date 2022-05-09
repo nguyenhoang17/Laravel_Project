@@ -38,6 +38,7 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
     //Checkout
         Route::get('/order/index','OrderController@index')-> name('order.index');
         Route::post('/','OrderController@store')->name('order.store');
+        Route::get('/order/orderplaced/{id}','OrderController@orderPlaced')-> name('order.placed');
    
         
 });

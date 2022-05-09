@@ -49,13 +49,13 @@
                 </p>
             </a>
             </li>
-          <li class="nav-header">Quản lý chung</li>
+          <li class="nav-header">Quản Lý Chung</li>
           <li class="nav-item @if(request()-> routeIs('backend.categories.*')) menu-open @endif">
   
             <a href="#2" class="nav-link @if(request()-> routeIs('backend.categories.*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quản lý danh mục
+                Quản lý Danh Mục
                 <i class="fas fa-angle-left right"></i>
 
               </p>
@@ -64,13 +64,13 @@
               <li class="nav-item">
                 <a href="{{route('backend.categories.index')}}" class="nav-link @if(request()-> routeIs('backend.categories.index')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách danh mục</p>
+                  <p>Danh Sách Danh Mục</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('backend.categories.create')}}" class="nav-link @if(request()-> routeIs('backend.categories.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tạo mới danh mục</p>
+                  <p>Tạo Mới Danh Mục</p>
                 </a>
               </li>
             </ul>
@@ -80,7 +80,7 @@
             <a href="#2" class="nav-link @if(request()-> routeIs('backend.products.*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quản lý Sản Phẩm
+                Quản Lý Sản Phẩm
                 <i class="fas fa-angle-left right"></i>
 
               </p>
@@ -89,7 +89,7 @@
             <li class="nav-item">
                 <a href="{{ route('backend.products.index') }}" class="nav-link @if(request()-> routeIs('backend.posts.index')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách Sản phẩm</p>
+                  <p>Danh Sách Sản Phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -105,7 +105,7 @@
             <a href="#2" class="nav-link @if(request()-> routeIs('backend.comments.*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quản lý bình luận
+                Quản Lý Bình Luận
                 <i class="fas fa-angle-left right"></i>
 
               </p>
@@ -114,7 +114,26 @@
               <li class="nav-item">
                 <a href="{{route('backend.comments.index')}}" class="nav-link @if(request()-> routeIs('backend.comments.index')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách bình luận</p>
+                  <p>Danh Sách Bình Luận</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item @if(request()-> routeIs('backend.orders.*')) menu-open @endif">
+  
+            <a href="#2" class="nav-link @if(request()-> routeIs('backend.orders.*')) active @endif">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Quản Lý Đơn Hàng
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('backend.orders.index')}}" class="nav-link @if(request()-> routeIs('backend.orders.index')) active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Đơn Hàng</p>
                 </a>
               </li>
             </ul>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -25,6 +26,9 @@ class OrderController extends Controller
         $product_id = $request->get('product_id');
         $products = $request->all();
         
+        // $product = Product::where('id','=',$product_id)->get();
+        // $product->sell_count +=1;
+        // $product->save();
         $order = new Order();
         $order-> user_id = auth()->user()->id;
         $order -> total = Cart::total();
@@ -33,8 +37,17 @@ class OrderController extends Controller
             ['quantity'=>$products['quantity'] ,
             'price'=>$products['price']]
         );
-        return redirect()->route('frontend.carts.destroy');
+       
+
+        return redirect()->route('frontend.order.placed',auth()->user()->id);
         
         
+    }
+    public function orderPlaced($id){
+        $orders=Order::where('user_id','=',$id)->get();
+        // dd($orders);
+        return view('frontend.orders.detail')->with([
+            'orders' => $orders
+        ]);
     }
 }
