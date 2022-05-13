@@ -1,10 +1,10 @@
 <div class="single-product">
-								<img class="img-fluid" src="/img/product/p1.jpg" alt="">
+								<img class="img-fluid" src="{{$product->image->path}}" alt="">
 								<div class="product-details">
 									<h6>{{$product -> name}}</h6>
 									<div class="price">
-										<h6>{{$product-> price_sale}}</h6>
-										<h6 class="l-through">{{$product-> price_origin}}</h6>
+										<h6 style="color:#ee4d2d;">{{$product-> price_sale_format}}</h6>
+										<h6 class="l-through">{{$product-> price_origin_format}}</h6>
 									</div>
 									<div class="prd-bottom">
 

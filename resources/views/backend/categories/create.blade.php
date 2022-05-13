@@ -37,14 +37,14 @@
                 @csrf
                 <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Tên danh mục</label>
+                    <label for="exampleInputEmail1">Tên danh mục<span style="color:red;"> *</span></label>
                     <input name="name" value="{{--old('name')--}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                     @error('name')
                       <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                   </div>
         
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="exampleInputPassword1">Trạng thái</label>
                       <select name="status" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                       <option selected="selected" data-select2-id="3">Option1</option>
@@ -55,7 +55,7 @@
                       <option data-select2-id="40">Option6</option>
                       <option data-select2-id="41">Option7</option>
                       </select>
-                    </div>
+                    </div> -->
                   
                 </div>
                 <!-- /.card-body -->

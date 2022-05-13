@@ -43,11 +43,62 @@
                     <input name="name" type="text" value="{{$product->name}}" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                    
                   </div>
-                  <div class="form-group col-6">
-                      <label for="exampleInputPassword1">Ảnh</label>
-                     <input value="{{}}" multiple class="form-control" type="file" name="images[]">
-                     
-                    </div>
+                  <div class="form-group">
+                                <label for="exampleInputEmail1" class="d-block">Xóa hình ảnh</label>
+                                <div id="boxImg">
+                                    @foreach($product->images as $image)
+                                        <div id="buu">
+                                            <img src="{{ $image->path}}" class="rounded float-start d-block"
+                                                 alt="...">
+                                            <div class="d-flex justify-content-center" style="margin-top: 10px;">
+                                                <input class="" type="checkbox" name="delete_img[]"-
+                                                       value="{{ $image->id }}">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">Hình ảnh sản phẩm</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="listImg"
+                                               name="images[]" multiple>
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <!-- <div class="input-group-append">
+                                        <span class="input-group-text" id="">Upload</span>
+                                    </div> -->
+                                </div>
+                                <div class="gallery d-flex flex-wrap" style="margin-top: 20px;"></div>
+                                @error('image[]')
+                                <p style="color: red;">{{ $message }}</p>
+                                @enderror
+                                <style>
+                                #buu {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    flex-direction: column;
+                                }
+
+                                #buu > img {
+                                    width: 250px;
+                                    height: 200px;
+                                    margin-right: 20px;
+                                }
+
+                                #boxImg {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    flex-direction: row;
+                                }
+
+                                .gallery > img {
+                                    width: 250px;
+                                    margin-right: 20px;
+                                }
+                            </style>
+                            </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Mô tả</label>
                     <textarea class="col-12"  name="description" id="text_area" cols="30" rows="10">{{$product->description}}</textarea>
@@ -67,6 +118,16 @@
                       </select>
                      
                     </div>
+                    <div class="form-group col-6">
+                      <label for="exampleInputPassword1">Nhãn hiệu</label>
+                      <select name="brand_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                      @foreach($brands as $brand)
+                          <option value="{{$brand-> id}}" selected>{{$brand -> name}}</option>
+                          @endforeach
+                      </select>
+                     
+                    </div>
+                  
                     <div class="row">
                         <div class="form-group col-3">
                         <label for="exampleInputPassword1">Số lượng</label>
@@ -117,4 +178,34 @@
         </div>
         
       </div><!-- /.container-fluid -->
+      <script>
+          function previewImages() {
+                var preview = document.querySelector('.gallery');
+
+                if (this.files) {
+                    [].forEach.call(this.files, readAndPreview);
+                }
+
+                function readAndPreview(file) {
+                    if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                        return alert(file.name + " is not an image");
+                    }
+
+                    var reader = new FileReader();
+
+                    reader.addEventListener("load", function () {
+                        var image = new Image();
+                        image.title = file.name;
+                        image.src = this.result;
+
+                        preview.appendChild(image);
+                    });
+
+                    reader.readAsDataURL(file);
+
+                }
+            }
+
+            document.querySelector('#listImg').addEventListener("change", previewImages);
+      </script>
 @endsection

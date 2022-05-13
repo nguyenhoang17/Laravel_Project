@@ -12,13 +12,18 @@ class ProductsByCategoryController extends Controller
 {
     public function productByCategory($id){
         $categories = Category::get();
+        // $productsByCategory = Product::whereHas('category', function($query) use($id){
+        //     $query-> where('category_id', '=', $id);
+        // })->limit(6)-> get();
         $productsByCategory = Product::whereHas('category', function($query) use($id){
             $query-> where('category_id', '=', $id);
-        })->limit(6)-> get();
+        })->paginate(6);
+        $related_products = Product::where('status',Product::STATUS_ACTIVE)->where('price_sale','!=',0)->limit(6)->get();
        
         return view('frontend.products.category')-> with([
             'productsByCategory' => $productsByCategory,
-            'categories'=> $categories
+            'categories'=> $categories,
+            'related_products'=>$related_products
         ]);
     }
 }

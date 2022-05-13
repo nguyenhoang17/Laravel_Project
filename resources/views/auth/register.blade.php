@@ -27,10 +27,11 @@
 </div>
 <div class="card">
 <div class="card-body register-card-body">
-<p class="login-box-msg">Register a new membership</p>
+<p class="login-box-msg">Đăng ký tài khoản mới</p>
 <form action="{{ route('auth.register') }}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Họ tên<span style="color:red;"> *</span></label>
 <input name="name" type="text" class="form-control" placeholder="Full name">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -39,6 +40,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Email<span style="color:red;"> *</span></label>
 <input name="email" type="email" class="form-control" placeholder="Email">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -47,6 +49,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Địa chỉ<span style="color:red;"> *</span></label>
 <input  name="address" type="text" class="form-control" placeholder="Address">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -55,6 +58,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Số điện thoại<span style="color:red;"> *</span></label>
 <input  name="phone" type="text" class="form-control" placeholder="Phone">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -64,6 +68,7 @@
 </div>
 
 <div class="form-group">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Ảnh<span style="color:red;"> *</span></label>
 <label for="exampleInputFile"></label>
 <div class="input-group">
 <div class="custom-file">
@@ -75,6 +80,7 @@
 
 
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Mật khẩu<span style="color:red;"> *</span></label>
 <input name="password" type="password" class="form-control" placeholder="Password">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -83,6 +89,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Xác nhận mật khẩu<span style="color:red;"> *</span></label>
 <input name="password_confirmation" type="password" class="form-control" placeholder="Retype password">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -96,7 +103,7 @@
 </div>
 
 <div class="col-4">
-<button type="submit" class="btn btn-warning btn-block">Register</button>
+<button type="submit" class="btn btn-warning btn-block">Đăng ký</button>
 </div>
 
 </div>
@@ -105,14 +112,14 @@
 <p>- OR -</p>
 <a href="#" class="btn btn-block btn-primary">
 <i class="fab fa-facebook mr-2"></i>
-Sign up using Facebook
+Đăng nhập bằng Facebook
 </a>
 <a href="#" class="btn btn-block btn-danger">
 <i class="fab fa-google-plus mr-2"></i>
-Sign up using Google+
+Đăng nhập bằng tài khoản google
 </a>
 </div>
-<a style="color:orange" href="{{route('auth.login')}}" class="text-center">I already have a membership</a>
+<a style="color:orange" href="{{route('auth.login')}}" class="text-center">Tôi đã có tài khoản</a>
 </div>
 
 </div>

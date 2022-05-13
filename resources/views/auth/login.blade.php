@@ -28,10 +28,11 @@
 
 <div class="card">
 <div class="card-body login-card-body">
-<p class="login-box-msg">Login for shopping!!!</p>
+<p class="login-box-msg">Đăng nhập để mua sắm!!!</p>
 <form action="{{route('auth.login')}}" method="post">
 @csrf
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Email<span style="color:red;"> *</span></label>
 <input name="email" type="email" class="form-control" placeholder="Email">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -40,6 +41,7 @@
 </div>
 </div>
 <div class="input-group mb-3">
+<label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Mật khẩu<span style="color:red;"> *</span></label>
 <input name="password" type="password" class="form-control" placeholder="Password">
 <div class="input-group-append">
 <div class="input-group-text">
@@ -52,13 +54,13 @@
 <div class="icheck-warning">
 <input type="checkbox" id="remember" name="remember">
 <label for="remember">
-Remember Me
+Nhớ
 </label>
 </div>
 </div>
 
 <div class="col-4">
-<button type="submit" class="btn btn-warning btn-block" style="color:white;">Login</button>
+<button type="submit" class="btn btn-warning btn-block" style="color:white;width:100px;">Đăng nhập</button>
 </div>
 
 </div>
@@ -66,18 +68,16 @@ Remember Me
 <div class="social-auth-links text-center mb-3">
 <p>- OR -</p>
 <a href="#" class="btn btn-block btn-primary">
-<i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+<i class="fab fa-facebook mr-2"></i> Đăng nhập bằng tài khoản Facebook
 </a>
 <a href="#" class="btn btn-block btn-danger">
-<i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+<i class="fab fa-google-plus mr-2"></i> Đăng nhập bằng tài khoản google
 </a>
 </div>
 
-<p class="mb-1">
-<a style="color:orange" href="forgot-password.html">I forgot my password</a>
-</p>
+
 <p class="mb-0">
-<a style="color:orange" href="{{route('auth.register')}}" class="text-center">Register a new membership</a>
+<a style="color:orange" href="{{route('auth.register')}}" class="text-center">Đăng ký tài khoản mới</a>
 </p>
 </div>
 

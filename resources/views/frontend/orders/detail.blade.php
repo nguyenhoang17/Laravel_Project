@@ -121,11 +121,15 @@
 										<h5></h5>
 									</td>
 									<td>
-										<p>{{$order->status_text}}</p>
+										<p style="color:red;">{{$order->status_text}}</p>
 									</td>
 								</tr>
+
 							</tbody>
 						</table>
+						@if($order->status != 5 && $order->status !=6)
+							<button class="btn btn-danger ml-2"><a style="color: #ffffff;" href="{{route('frontend.order.request.cancellation', $order->id)}}">Hủy đơn hàng</a></button>
+						@endif
 					</div>
 					
 				</div>

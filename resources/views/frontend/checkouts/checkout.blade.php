@@ -26,7 +26,7 @@
             
             <div class="billing_details">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-6">
                         <h3>Billing Details</h3>
                         <form class="row contact_form" action="{{route('frontend.order.store')}}" method="post" novalidate="novalidate">
                             @csrf
@@ -98,14 +98,14 @@
                             </div>
                         
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="order_box">
                             <h2>Your Order</h2>
                             <ul class="list">
                                 <li><a href="#">Product <span>Total</span></a></li>
                                 @foreach($products as $product)
                                 <input type="hidden" value="{{$product->id}}" name="product_id[]">
-                                <input type="hidden" value="{{$product->qty}}" name="quantity">
+                                <input type="hidden" value="{{$product->qty}}" name="quantity[]">
                                 <input type="hidden" value="{{$product->price}}" name="price">
 
                                 <li><a href="#">{{$product -> name}} <span class="middle">x {{$product->qty}}</span> <span class="last">{{$product->price}}</span></a></li>

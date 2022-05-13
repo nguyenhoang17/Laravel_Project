@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Brand;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -39,8 +40,10 @@ class ProductController extends Controller
     public function create()
     {   
         $categories = Category::get();
+        $brands=Brand::get();
         return view('backend.products.create')-> with([
-            'categories'=> $categories
+            'categories'=> $categories,
+            'brands'=>$brands
         ]);
     }
 
@@ -64,6 +67,7 @@ class ProductController extends Controller
         $product -> price_sale = $data['price_sale'];
         $product->status = $data['status'];
         $product->user_id=$data['user_id'];
+        $product->brand_id=$data['brand_id'];
         $product-> save();
         if($request->hasFile('images')){
             foreach($request->images as $image){
@@ -107,13 +111,15 @@ class ProductController extends Controller
     public function edit($id)
     {
         $categories=Category::get();
+        $brands=Brand::get();
         $product = Product::find($id);
         $images = Image::where('product_id','=',$id)->get();
-        dd($images);
+        
         return view('backend.products.edit')-> with([
             'product'=> $product,
             'categories'=>$categories,
-            'images'=>$images
+            'images'=>$images,
+            'brands'=>$brands
         ]);
     }
 
@@ -144,12 +150,22 @@ class ProductController extends Controller
                $name = time().'_'.$image->getClientOriginalName();
               
                $path = Storage::disk($disk)->putFileAs('products',$image,$name);
+               $url = Storage::disk($disk)->url($path);
                $image = new Image();
                $image-> name = $name;
                $image->disk=$disk;
-               $image->path= $path;
+               $image->path= $url;
                $image->product_id = $product->id;
                $image -> save();
+               
+            }
+        }
+        $deleteImg = $request->delete_img;
+        if (!empty($deleteImg)) {
+            foreach ($deleteImg as $dete) {
+                $imgDelete = Image::find($dete);
+                Storage::disk('images')->delete($imgDelete->path);
+                $imgDelete->delete();
             }
         }
         $request->session()->flash('success', 'Created product successfully');

@@ -78,7 +78,7 @@
                       <td>{{$order->user->email}}</td>
                       <td>{{$order->user->address}}</td>
                       <td>{{$order->user->phone}}</td>
-                      <td>
+                      <td style="@if($order->status==5) color:red;@endif ">
                       {{$order->status_text}}
                           @php
                               $disabled1="";
@@ -98,7 +98,7 @@
                               if($order->status>=4){
                                 $disabled4 = "disabled";
                               }
-                              if($order->status>=5){
+                              if($order->status>=6){
                                 $disabled5 = "disabled";
                               }
                             @endphp

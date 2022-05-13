@@ -36,7 +36,7 @@ class OrderController extends Controller
     }
     public function cancelled($id){
         $order=Order::find($id);
-        $order->status = 5;
+        $order->status = 6;
         $order->save();
         return redirect()->route('backend.orders.index');
     }

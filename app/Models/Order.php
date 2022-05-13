@@ -14,7 +14,8 @@ class Order extends Model
         '2'=>'Đơn hàng đã được xác nhận',
         '3'=>'Đang vận chuyển',
         '4'=>'Đã giao hàng',
-        '5'=>'Đơn hàng bị hủy'
+        '5'=>'Đơn hàng có yêu cầu hủy',
+        '6'=>'Đơn hàng bị hủy'
     ];
     public function getStatusTextAttribute(){
         return $this->statusArr [$this->status];

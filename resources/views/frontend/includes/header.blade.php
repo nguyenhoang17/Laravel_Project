@@ -19,10 +19,14 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Cửa hàng</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="{{route('frontend.product.category',1)}}">Danh mục sản phẩm</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{route('frontend.product.category',11)}}">Danh mục sản phẩm</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-product.html">Chi tiết sản phẩm</a></li>
-									<li class="nav-item"><a class="nav-link" href="checkout.html">Thanh toán</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.html">Giỏ hàng</a></li>
+									<li class="nav-item"><a class="nav-link" href="@if(auth()->check()){{route('frontend.order.index')}}
+																					@else {{route('auth.login')}}
+																					@endif">Thanh toán</a></li>
+									<li class="nav-item"><a class="nav-link" href="@if(auth()->check()){{route('frontend.carts.index')}}
+																					@else {{route('auth.login')}}
+																					@endif">Giỏ hàng</a></li>
 									<!-- <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li> -->
 								</ul>
 							</li>
@@ -46,7 +50,7 @@
 									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 								</ul>
 							</li> -->
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							<!-- <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
 							
 
 							 <!-- Ap dung cache-->

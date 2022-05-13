@@ -38,12 +38,54 @@
                 <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
                 <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Tên sản phẩm</label>
+                    <label for="exampleInputEmail1">Tên sản phẩm<span style="color:red;"> *</span></label>
                     <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                    
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Mô tả</label>
+                                <label for="exampleInputFile">Hình ảnh sản phẩm<span style="color:red;"> *</span></label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="listImg"
+                                               name="images[]" multiple>
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <!-- <div class="input-group-append">
+                                        <span class="input-group-text" id="">Upload</span>
+                                    </div> -->
+                                </div>
+                                <div class="gallery d-flex flex-wrap" style="margin-top: 20px;"></div>
+                                @error('image[]')
+                                <p style="color: red;">{{ $message }}</p>
+                                @enderror
+                                <style>
+                                #buu {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    flex-direction: column;
+                                }
+
+                                #buu > img {
+                                    width: 250px;
+                                    height: 200px;
+                                    margin-right: 20px;
+                                }
+
+                                #boxImg {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    flex-direction: row;
+                                }
+
+                                .gallery > img {
+                                    width: 250px;
+                                    margin-right: 20px;
+                                }
+                            </style>
+                      </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Mô tả<span style="color:red;"> *</span></label>
                     <textarea class="col-12" name="description" id="text_area" cols="30" rows="10"></textarea>
                    
                   </div>
@@ -53,7 +95,7 @@
                   
                   <div class= "row">
                     <div class="form-group col-6">
-                      <label for="exampleInputPassword1">Danh mục</label>
+                      <label for="exampleInputPassword1">Danh mục<span style="color:red;"> *</span></label>
                       <select name="category_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                       @foreach ($categories as $category)
                         <option value="{{$category-> id}}" data-select2-id="3">{{$category-> name}}</option>
@@ -62,25 +104,30 @@
                      
                     </div>
                     <div class="form-group col-6">
-                      <label for="exampleInputPassword1">Ảnh</label>
-                     <input multiple class="form-control" type="file" name="images[]">
+                      <label for="exampleInputPassword1">Nhãn hiệu</label>
+                      <select name="brand_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                      @foreach ($brands as $brand)
+                        <option value="{{$brand-> id}}" data-select2-id="3">{{$brand-> name}}</option>
+                      @endforeach
+                      </select>
                      
                     </div>
+                    
                     <div class="row">
                         <div class="form-group col-3">
-                        <label for="exampleInputPassword1">Số lượng</label>
+                        <label for="exampleInputPassword1">Số lượng<span style="color:red;"> *</span></label>
                         <input name="quantity" type="number" min="1" class="form-control" id="exampleInputEmail1" placeholder="Nhập số lượng">
                         </div>
                         <div class="form-group col-3">
-                        <label for="exampleInputPassword1">Giá gốc</label>
+                        <label for="exampleInputPassword1">Giá gốc<span style="color:red;"> *</span></label>
                         <input name="price_origin" type="text" step=".01" class="form-control" id="exampleInputEmail1" placeholder="Nhập...">
                         </div>
                         <div class="form-group col-3">
-                        <label for="exampleInputPassword1">Giá khuyến mãi</label>
+                        <label for="exampleInputPassword1">Giá khuyến mãi<span style="color:red;"> *</span></label>
                         <input name="price_sale" type="text" step=".01" class="form-control" id="exampleInputEmail1" placeholder="Nhập...">
                         </div>
                         <div class="form-group col-3">
-                        <label for="exampleInputPassword1">Trạng Thái</label>
+                        <label for="exampleInputPassword1">Trạng Thái<span style="color:red;"> *</span></label>
                         <select name="status" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                         
                             <option value="1" data-select2-id="3" selected>Còn hàng</option>
@@ -105,4 +152,35 @@
         </div>
         
       </div><!-- /.container-fluid -->
+
+      <script>
+          function previewImages() {
+                var preview = document.querySelector('.gallery');
+
+                if (this.files) {
+                    [].forEach.call(this.files, readAndPreview);
+                }
+
+                function readAndPreview(file) {
+                    if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                        return alert(file.name + " is not an image");
+                    }
+
+                    var reader = new FileReader();
+
+                    reader.addEventListener("load", function () {
+                        var image = new Image();
+                        image.title = file.name;
+                        image.src = this.result;
+
+                        preview.appendChild(image);
+                    });
+
+                    reader.readAsDataURL(file);
+
+                }
+            }
+
+            document.querySelector('#listImg').addEventListener("change", previewImages);
+      </script>
 @endsection

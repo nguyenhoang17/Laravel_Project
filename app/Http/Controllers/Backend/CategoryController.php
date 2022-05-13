@@ -43,9 +43,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request -> validate([
-            'name' => 'required|unique:categories|max:255',
-        ]);
+        // $validated = $request -> validate([
+        //     'name' => 'required|unique:categories|max:255',
+        // ]);
         $data=$request-> all(); 
         // DB::table('categories')-> insert([
         //     'name' => $data['name'],

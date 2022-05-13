@@ -18,7 +18,7 @@ return new class extends Migration
             $table -> string('name');
             $table -> string('slug');
             $table -> integer('category_id');
-            $table -> string('description') -> nullable();
+            $table -> text('description') -> nullable();
             $table -> integer('quantity') -> default(1);
             $table -> decimal('price_origin',13,2)-> default(0);
             $table -> decimal('price_sale',13,2)-> default(0);
@@ -26,7 +26,7 @@ return new class extends Migration
             $table -> integer('sell_count')-> default(0);
             $table -> integer('like_count')-> default(0);
             $table -> integer('user_id');
-            $table -> integer('shop_id');
+            $table -> integer('brand_id')->nullable();
             $table -> json('attribute')-> nullable();
             $table -> integer('status')-> default(0);
             $table->timestamps();

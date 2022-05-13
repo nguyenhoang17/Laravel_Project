@@ -11,9 +11,12 @@ class HomeController extends Controller
     public function index(){
         $latest_products = Product::where('status',Product::STATUS_ACTIVE)->limit(8)->orderBy('created_at','DESC')-> get();
         $coming_products = Product::where('status',Product::STATUS_ACTIVE)->limit(8)-> get();
+        $related_products = Product::where('status',Product::STATUS_ACTIVE)->where('price_sale','!=',0)->limit(6)->get();
+        // dd($related_products);
         return view('frontend.home.index')-> with([
             'latest_products'=> $latest_products,
-            'coming_products' => $coming_products
+            'coming_products' => $coming_products,
+            'related_products'=>$related_products,
         ]);
     }
 }

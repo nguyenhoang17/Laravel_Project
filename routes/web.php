@@ -28,6 +28,7 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
     //ProductDetail
         Route::get('/productDetail/{id}','ProductDetailController@productDetail' )-> name('product.detail');
         Route::post('/addComment/{id}','ProductDetailController@addComment')->name('comment.add');
+        Route::post('/addreview/{id}','ProductDetailController@addReview')->name('review.add');
     //Cart
         Route::get('/carts/index','CartController@index')->name('carts.index');
         Route::get('/carts/add/{id}','CartController@add')->name('carts.add');
@@ -39,6 +40,7 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
         Route::get('/order/index','OrderController@index')-> name('order.index');
         Route::post('/','OrderController@store')->name('order.store');
         Route::get('/order/orderplaced/{id}','OrderController@orderPlaced')-> name('order.placed');
+        Route::get('/order/requestCancellation/{id}','OrderController@requestCancellation')-> name('order.request.cancellation');
    
         
 });
@@ -59,6 +61,16 @@ Route::prefix('backend')
             Route::get('/{id}/edit','CategoryController@edit')-> name('edit');
             Route::put('/{id}','CategoryController@update')-> name('update');
             Route::delete('/{id}', 'CategoryController@destroy')-> name('destroy');
+        });
+    //Brands
+        Route::prefix('brands')-> name('brands.')-> group(function(){
+            Route::get('/','BrandController@index')-> name('index');
+            // Route::get('/{id}','CategoryController@show')-> name('show');
+            Route::get('/create','BrandController@create')-> name('create');
+            Route::post('/','BrandController@store')-> name('store');
+            Route::get('/{id}/edit','BrandController@edit')-> name('edit');
+            Route::put('/{id}','BrandController@update')-> name('update');
+            Route::delete('/{id}', 'BrandController@destroy')-> name('destroy');
         });
     //Products
         Route::prefix('products')-> name('products.')-> group(function(){
@@ -88,6 +100,12 @@ Route::prefix('backend')
             Route::get('/hide/{id}','CommentController@hide')-> name('hide');
             Route::get('/show/{id}','CommentController@show')-> name('show');
         });
+     //Review
+        Route::prefix('reviews')-> name('reviews.')-> group(function(){
+        Route::get('/','ReviewController@index')-> name('index');
+        Route::get('/hide/{id}','ReviewController@hide')-> name('hide');
+        Route::get('/show/{id}','ReviewController@show')-> name('show');
+    });    
     //Order
         Route::prefix('orders')->name('orders.')->group(function(){
             Route::get('/','OrderController@index')->name('index');

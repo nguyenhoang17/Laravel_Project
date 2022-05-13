@@ -56,7 +56,24 @@
 </div>
 </div>
 <div class="input-group mb-3">
-<input value="{{$user-> role}}" name="role" type="text" class="form-control" placeholder="Role">
+<!--<input value="{{--$user-> role--}}" name="role" type="text" class="form-control" placeholder="Role">-->
+@php 
+    $selected1="";
+    $selected2="";
+    
+    if($user->role="admod"){
+        $selected1="selected";
+    }
+    if($user->role="user"){
+        $selected2="selected";
+    }
+
+@endphp
+<select style="width: 50%;" id="" name="role">
+  <option value="admod" {{$selected1}}>admod</option>
+  <option value="user" {{$selected2}}>user</option>
+ 
+</select>
 <div class="input-group-append">
 <div class="input-group-text">
 <span><i class="fa-solid fa-book"></i></span>

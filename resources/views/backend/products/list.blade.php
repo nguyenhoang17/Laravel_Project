@@ -65,7 +65,7 @@
                       <th>Tên sản phẩm</th>
                       <th>Ảnh</th>
                       <th>Danh mục</th>
-                      <th>Mô tả</th>
+                      <th>Nhãn Hiệu</th>
                       <th>Số lượng</th>
                       <th>Giá gốc</th>
                       <th>Giá khuyến mãi</th>
@@ -92,7 +92,7 @@
                       
                       </td>
                       <td>{{$product->category-> name}}</td>
-                      <td>{{$product->description}}</td>
+                      <td>{{$product->brand->name}}</td>
                       <td>{{$product-> quantity}}</td>
                       <td>{{$product->price_origin_format}}</td>
                       <td>{{$product->price_sale_format}}</td>
@@ -109,7 +109,7 @@
                           <form action="{{route('backend.products.destroy',$product->id)}}" method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="delete">
-                          <button style="margin-left:10px;" type="submit" class= "btn-delete"><i class="fa-solid fa-trash"></i></button>
+                          <button style="margin-left:10px;" type="submit" class= "btn-delete show_confirm" data-name="{{$product->name}}"><i class="fa-solid fa-trash"></i></button>
                           </form>
                           <!-- <a href="{{--route('backend.posts.destroy',['id'=>1])--}}" type="button" class= "btn-delete"><i class="fa-solid fa-trash"></i></a> -->
                       </td>
