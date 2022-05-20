@@ -21,14 +21,33 @@ class ProductController extends Controller
     public function index()
     {
         $images = Image::all();
+        $categories = Category::all();
+        $brands = Brand::all();
+
+        $name = \request()-> get('name');
+        $category_id = \request()->get('category_id');
+        $brand_id = \request()->get('brand_id');
+       
+        $products_query= Product::
+        select();
+            if(!empty($name)){
+                $products_query =  $products_query -> where('name', "LIKE", "%$name%");
+            }
+
+            if(!empty($category_id)){
+                $products_query =  $products_query -> where('category_id',$category_id);
+            }
+          
         
-        $products = Product::with('image')->orderBy('created_at','desc')->paginate(15);
+        $products = $products_query->with('image')->orderBy('created_at','desc')->paginate(15);
         // foreach($products as $product){
 
         // }
         return view('backend.products.list')-> with([
             'products' => $products,
-            'images' => $images
+            'images' => $images,
+            'categories' => $categories,
+            'brands' => $brands
         ]);
     }
 
@@ -55,7 +74,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validated = $request -> validate([
+            'name' => 'required|unique:products|max:255|string',
+            'images[]' => 'mimes:jpg,png,jpeg,gif,svg|max:204',
+            'description'=> 'required|string',
+            'category_id'=> 'required|numeric',
+            'brand_id' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'price_input'=> 'required|numeric',
+            'price_sale' => 'required|numeric|gt:price_input|',
+            'price_origin'=> 'required|numeric|gt:price_input|gt:price_sale',
+           
+
+        ]);
         // dd($request->only('images'));
         $data = $request-> all();
         $product = new Product();
@@ -63,6 +94,7 @@ class ProductController extends Controller
         $product -> category_id = $data['category_id'];
         $product -> description = $data['description'];
         $product -> quantity = $data['quantity'];
+        $product -> price_input = $data['price_input'];
         $product -> price_origin = $data['price_origin'];
         $product -> price_sale = $data['price_sale'];
         $product->status = $data['status'];
@@ -85,7 +117,7 @@ class ProductController extends Controller
                
             }
         }
-        $request->session()->flash('success', 'Created product successfully');
+        $request->session()->flash('success', 'Tạo sản phẩm thành công');
         
         return redirect()->route('backend.products.index');
 
@@ -131,14 +163,27 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {$validated = $request -> validate([
+        'name' => 'required|max:255|string',
+        'images[]' => 'mimes:jpg,png,jpeg,gif,svg|max:204',
+        'description'=> 'required|string',
+        'category_id'=> 'required|numeric',
+        'brand_id' => 'required|numeric',
+        'quantity' => 'required|numeric',
+        'price_input'=> 'required|numeric',
+        'price_sale' => 'required|numeric|gt:price_input|',
+        'price_origin'=> 'required|numeric|gt:price_input|gt:price_sale',
+
+    ]);
+        
         $data = $request -> all();
         $product = Product::find($id);
-        
-        $product -> name = $data['name'];
-        $product -> category_id = $data['category_id'];
-        $product -> description = $data['description'];
+        $this->authorize('update',$product);
+        $product->name = $data['name'];
+        $product->category_id = $data['category_id'];
+        $product-> description = $data['description'];
         $product -> quantity = $data['quantity'];
+        $product -> price_input = $data['price_input'];
         $product -> price_origin = $data['price_origin'];
         $product -> price_sale = $data['price_sale'];
         $product->status = $data['status'];
@@ -168,7 +213,7 @@ class ProductController extends Controller
                 $imgDelete->delete();
             }
         }
-        $request->session()->flash('success', 'Created product successfully');
+        $request->session()->flash('success', 'Cập nhật sản phẩm thành công');
         // dd($product);
         return redirect()->route('backend.products.index');
 
@@ -182,8 +227,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::find($id)->delete($id);
-        Image::where('product_id','=',$id)->delete();
-        return redirect()-> route('backend.products.index')->with('success', 'Deleted category successfully');
+        $product=Product::find($id);
+        $this->authorize('update', $product);
+        $product->delete($id);
+        Image::where('product_id', $id)->delete();
+        return redirect()-> route('backend.products.index')->with('success', 'Xóa sản phẩm thành công');
     }
 }

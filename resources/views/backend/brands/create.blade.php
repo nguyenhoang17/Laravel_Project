@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    Thêm Nhãn Hiệu
+    Thêm nhãn hiệu
 @endsection
 @section('script')
   <script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
@@ -14,12 +14,12 @@
 <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Thêm Nhãn Hiệu</h1>
+            <h1 class="m-0">Thêm nhãn hiệu</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Thêm Nhãn Hiệu</li>
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Thêm nhãn hiệu</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -37,10 +37,10 @@
                 @csrf
                 <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Tên Nhãn Hiệu<span style="color:red;"> *</span></label>
+                    <label for="exampleInputEmail1">Tên nhãn hiệu<span style="color:red;"> *</span></label>
                     <input name="name" value="" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                     @error('name')
-                      <div class="alert alert-danger">{{$message}}</div>
+                      <div style="color: red;" class="">{{$message}}</div>
                     @enderror
                   </div>
         
@@ -57,8 +57,8 @@
                                     </div> -->
                         </div>
                         <div class="gallery d-flex flex-wrap" style="margin-top: 20px;"></div>
-                            @error('image[]')
-                            <p style="color: red;">{{ $message }}</p>
+                            @error('image')
+                            <div style="color: red;" class="">{{$message}}</div>
                             @enderror
                              <style>
                                 #buu {

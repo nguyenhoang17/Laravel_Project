@@ -8,22 +8,25 @@
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
+										<a href="@if(auth()->check()){{route('frontend.carts.add',['id' =>$product->id])}}
+														 @else{{route('auth.login')}}
+														 @endif" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">Thêm vào giỏ hàng</p>
 										</a>
-										<a href="" class="social-info">
+										<!-- <a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
+										</a> -->
+										<!-- <a href="" class="social-info">
 											<span class="lnr lnr-sync"></span>
 											<p class="hover-text">compare</p>
-										</a>
+										</a> -->
 										<a href="{{route('frontend.product.detail', $product-> id)}}" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">Chi tiết</p>
 										</a>
+										<p style="float: right;">Đã bán: {{$product->sell_count}}</p>
 									</div>
 								</div>
 							</div>

@@ -16,7 +16,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
               <li class="breadcrumb-item active">Danh sách nhãn hiệu</li>
             </ol>
           </div><!-- /.col -->
@@ -40,6 +40,14 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-12">
+          <form>
+            <div class="input-group input-group-sm" style="width: 40%; margin-bottom: 10px;">
+              <input type="text" name="name" class="form-control float-right mx-1" placeholder="Tên" value="{{request()->get('name')}}">
+                <button type="submit" class="btn btn-default" style="height:32.5px; margin-left:5px;padding-top:3px;">
+                  Lọc kết quả
+                </button>
+            </div>
+          </form>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><a href = "{{route('backend.brands.create')}}" type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Thêm nhãn hiệu</a> </h3>
@@ -65,7 +73,7 @@
                       <th>Tên nhãn hiệu</th>
                       <th>Ảnh</th>
                       <th>Ngày tạo</th>
-                      <th>Ngày sửa</th>
+                      <th>Ngày cập nhật</th>
                     </tr>
                   </thead>
                   <tbody>

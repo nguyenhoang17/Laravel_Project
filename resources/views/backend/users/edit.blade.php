@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Registration Page</title>
+<title>HoangShoes | Cập nhật tài khoản</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
 
@@ -23,11 +23,11 @@
     @endif
 <div class="register-box">
 <div class="register-logo">
-<a href="../../index2.html"><b>Admin</b>LTE</a>
+<a href="../../index2.html"><b>HoangShoes</b></a>
 </div>
 <div class="card">
 <div class="card-body register-card-body">
-<p class="login-box-msg">Register a new membership</p>
+<p class="login-box-msg">Đăng ký tài khoản mới</p>
 <form action="{{ route('backend.users.update',$user->id) }}" method="post" enctype="multipart/form-data">
 @csrf
 <input type="hidden" name="_method" value="put">
@@ -70,8 +70,8 @@
 
 @endphp
 <select style="width: 50%;" id="" name="role">
-  <option value="admod" {{$selected1}}>admod</option>
-  <option value="user" {{$selected2}}>user</option>
+  <option value="admod" {{$selected1}}>Quản trị viên</option>
+  <option value="user" {{$selected2}}>Khách hàng</option>
  
 </select>
 <div class="input-group-append">

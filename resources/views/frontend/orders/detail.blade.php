@@ -31,6 +31,7 @@
 								<tr>
 									<th scope="col">Sản Phẩm</th>
 									<th scope="col">Số Lượng</th>
+									<th scope="col">Chú ý</th>
 									<th scope="col">Giá tiền</th>
 									<th scope="col">Tổng</th>
 								</tr>
@@ -45,9 +46,10 @@
 									<td>
 										<h5>x {{$product->pivot->quantity}}</h5>
 									</td>
-									<td><p>{{$product->pivot->price}}</p></td>
+				
+									<td><p>{{number_format($product->pivot->price,0,'.',',')}}đ</p></td>
 									<td>
-										<p>{{$product->pivot->quantity * $product->pivot->price}}</p>
+										<p>{{number_format($product->pivot->quantity * $product->pivot->price,0,'.',',')}}đ</p>
 									</td>
 								</tr>
 								@endforeach
@@ -95,6 +97,20 @@
 										<p>Flat rate: $50.00</p>
 									</td>
 								</tr> -->
+								<tr>
+									<td>
+										<h4>Chú ý về sản phẩm</h4>
+									</td>
+									<td>
+										<p>{{$order->note}}</p>
+									</td>
+									<td>
+										<h5></h5>
+									</td>
+									<td>
+										<p></p>
+									</td>
+								</tr>
 								
 								<tr>
 									<td>
@@ -107,7 +123,7 @@
 										<h5></h5>
 									</td>
 									<td>
-										<p>{{$order->total}}</p>
+										<p>{{number_format($order->total,0,'.',',')}}đ</p>
 									</td>
 								</tr>
 								<tr>
@@ -127,7 +143,7 @@
 
 							</tbody>
 						</table>
-						@if($order->status != 5 && $order->status !=6)
+						@if($order->status != 5 && $order->status !=6 && $order->status != 4)
 							<button class="btn btn-danger ml-2"><a style="color: #ffffff;" href="{{route('frontend.order.request.cancellation', $order->id)}}">Hủy đơn hàng</a></button>
 						@endif
 					</div>

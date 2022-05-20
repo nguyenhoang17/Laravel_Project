@@ -35,7 +35,8 @@ class CartController extends Controller
         }
         else{
            
-        Cart::add($product->id, $product->name, $qty, $product->price_origin);
+        Cart::add($product->id, $product->name, $qty, $product->price_sale);
+        $request->session()->flash('success', 'Thêm thành công vào giỏ hàng');
         return redirect()->route('frontend.carts.index');
         }
     }
@@ -51,10 +52,10 @@ class CartController extends Controller
 
     public function remove($rowId){
         Cart::remove($rowId);
-        return redirect()->route('frontend.carts.index');
+        return redirect()->route('frontend.carts.index')->with('success', 'Xóa khỏi giỏ hàng thành công');
     }
     public function destroy(){
         Cart::destroy();
-        return redirect()->route('frontend.carts.index');
+        return redirect()->route('frontend.carts.index')->with('success', 'Làm mới giỏ hàng thành công');
     }
 }

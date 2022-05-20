@@ -33,14 +33,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item ">
+               <!-- <li class="nav-item ">
             <a href="http://127.0.0.1:8000/log-viewer" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                 LOG
                 </p>
             </a>
-            </li>
+            </li> -->
             <li class="nav-item ">
             <a href="{{route('backend.')}}" class="nav-link @if(request()-> is('backend/dashboard')) active @endif">
                 <i class="nav-icon far fa-calendar-alt"></i>
@@ -70,7 +70,32 @@
               <li class="nav-item">
                 <a href="{{route('backend.categories.create')}}" class="nav-link @if(request()-> routeIs('backend.categories.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tạo Mới Danh Mục</p>
+                  <p>Thêm Danh Mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item @if(request()-> routeIs('backend.brands.*')) menu-open @endif">
+  
+            <a href="#2" class="nav-link @if(request()-> routeIs('backend.brands.*')) active @endif">
+              <i class="nav-icon fa-solid fa-shop"></i>
+              <p>
+                Quản Lý Nhãn Hiệu
+                <i class="fas fa-angle-left right"></i>
+
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('backend.brands.index') }}" class="nav-link @if(request()-> routeIs('backend.brands.index')) active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh Sách Nhãn Hiệu</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('backend.brands.create')}}" class="nav-link @if(request()-> routeIs('backend.brands.create')) active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm Nhãn Hiệu</p>
                 </a>
               </li>
             </ul>
@@ -95,36 +120,12 @@
               <li class="nav-item">
                 <a href="{{ route('backend.products.create')}}" class="nav-link @if(request()-> routeIs('backend.products.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tạo Sản Phẩm</p>
+                  <p>Thêm Sản Phẩm</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item @if(request()-> routeIs('backend.brands.*')) menu-open @endif">
-  
-            <a href="#2" class="nav-link @if(request()-> routeIs('backend.brands.*')) active @endif">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Quản Lý Nhãn Hiệu
-                <i class="fas fa-angle-left right"></i>
-
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{ route('backend.brands.index') }}" class="nav-link @if(request()-> routeIs('backend.brands.index')) active @endif">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh Sách Nhãn Hiệu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('backend.brands.create')}}" class="nav-link @if(request()-> routeIs('backend.brands.create')) active @endif">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Thêm Nhãn Hiệu</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+         
           <li class="nav-item @if(request()-> routeIs('backend.comments.*')) menu-open @endif">
   
             <a href="#2" class="nav-link @if(request()-> routeIs('backend.comments.*')) active @endif">
@@ -158,7 +159,7 @@
               <li class="nav-item">
                 <a href="{{route('backend.reviews.index')}}" class="nav-link @if(request()-> routeIs('backend.reviews.index')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh Sách Bình Luận</p>
+                  <p>Danh Sách Đánh Giá</p>
                 </a>
               </li>
             </ul>
@@ -184,8 +185,10 @@
           </li>
          
           <li class="nav-header">Hệ thống</li>
+          @can('show',auth()->user())
           <li class="nav-item @if(request()-> routeIs('backend.users.*')) menu-open @endif">
             <a href="#2" class="nav-link @if(request()-> routeIs('backend.users.*')) active @endif">
+            
             <i class="fa-solid fa-user nav-icon"></i>
               <p>
                 Quản lý Users
@@ -203,7 +206,7 @@
               <li class="nav-item">
                 <a href="{{ route('backend.users.create')}}" class="nav-link @if(request()-> routeIs('backend.users.create')) active @endif">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tạo mới user</p>
+                  <p>Thêm user</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -215,6 +218,7 @@
               
             </ul>
           </li>
+          @endcan
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

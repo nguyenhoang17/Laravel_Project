@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    Create Category
+    Thêm danh mục
 @endsection
 @section('script')
   <script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
@@ -14,12 +14,12 @@
 <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Tạo Danh Mục</h1>
+            <h1 class="m-0">Thêm danh mục</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Tạo danh mục</li>
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Thêm danh mục</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -38,9 +38,9 @@
                 <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tên danh mục<span style="color:red;"> *</span></label>
-                    <input name="name" value="{{--old('name')--}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
+                    <input name="name" value="{{old('name')}}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                     @error('name')
-                      <div class="alert alert-danger">{{$message}}</div>
+                      <div style="color:red;" class="">{{$message}}</div>
                     @enderror
                   </div>
         

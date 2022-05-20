@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-	Trang chủ
+	Chi tiết sản phẩm
 @endsection
 
 @section('banner')
@@ -58,7 +58,7 @@
 							<!-- <a class="primary-btn" href="{{--@if(auth()->check()){{route('frontend.carts.add',['id' =>$product->id])}}
 														 @else{{route('auth.login')}}
 														 @endif--}}">Add to Cart</a> -->
-								<button style="border:none;" class="primary-btn" type="submit">Addtocart</button>
+								<button style="border:none;" class="primary-btn" type="submit">Thêm vào giỏ hàng</button>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
@@ -210,7 +210,7 @@
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
+										<button type="submit" value="submit" class="btn primary-btn">Bình luận</button>
 									</div>
 								</form>
 							</div>
@@ -222,17 +222,17 @@
 				<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 					<div class="row">
 						<div class="col-lg-6">
-							<div class="row total_rate">
-								<div class="col-6">
+							<div class="row total_rate mb-5">
+								<div class="col-12">
 									<div class="box_total">
-										<h5>Overall</h5>
-										<h4>4.0</h4>
-										<h6>({{count($reviews)}} Đánh giá)</h6>
+										<h5>Tổng thể</h5>
+										<h6>Sản phẩm này có {{count($reviews)}} Đánh giá</h6>
+										<!-- <h6>({{--count($reviews)--}} Đánh giá)</h6> -->
 									</div>
 								</div>
-								<div class="col-6">
+								<!-- <div class="col-6">
 									<div class="rating_list">
-										<h3>Based on 3 Reviews</h3>
+										<h3>Dựa trên {{count($reviews)}} Đánh giá</h3>
 										<ul class="list">
 											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
 											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
@@ -241,7 +241,7 @@
 											<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
 										</ul>
 									</div>
-								</div>
+								</div>  -->
 							</div>
 							<div class="review_list">
 								@foreach($reviews as $review)
@@ -325,7 +325,7 @@
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
+										<button type="submit" value="submit" class="btn primary-btn">Đánh giá</button>
 									</div>
 								</form>
 							</div>

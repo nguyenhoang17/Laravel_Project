@@ -17,19 +17,26 @@ class ReviewController extends Controller
 
     }
     public function hide($id){
-        $reviews = Review::find($id);
-        $reviews->status = 1;
-        $reviews->save();
-       return redirect()-> route('backend.reviews.index');
+        $review = Review::find($id);
+        if($review->status==0){
+            $review->status = 1;
+            $review->save();
+           return redirect()-> route('backend.reviews.index');
+        }
+       
 
 
     }
 
     public function show($id){
-        $reviews = Review::find($id);
-        $reviews->status = 0;
-        $reviews->save();
-        return redirect()-> route('backend.reviews.index');
+        
+        $review = Review::find($id);
+        if($review->status==1){
+            $review->status = 0;
+            $review->save();
+            return redirect()-> route('backend.reviews.index');
+        }
+        
  
  
      }

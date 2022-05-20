@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-	Trang chủ
+	Thanh toán
 @endsection
 
 @section('banner')
@@ -9,11 +9,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Shop Category page</h1>
+					<h1>Trang thanh toán</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Checkout</a>
+						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">Cửa hàng<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Thanh toán</a>
 					</nav>
 				</div>
 			</div>
@@ -27,13 +27,30 @@
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Billing Details</h3>
+                        <h3>Chi tiết thanh toán</h3>
                         <form class="row contact_form" action="{{route('frontend.order.store')}}" method="post" novalidate="novalidate">
                             @csrf
                             <div class="col-md-12 form-group p_star">
-                                <input value="{{auth()->user()->name}}" type="text" class="form-control" id="first" name="name" placeholder="Name">
+                                <p class="tt">Họ Và Tên: {{auth()->user()->name}}</p>
+                                <p class="tt">Số điện thoại: {{auth()->user()->phone}}</p>
+                                <p class="tt">Email: {{auth()->user()->email}}</p>
+                                <p class="tt">Địa chỉ: {{auth()->user()->address}}</p>
+                                <style>
+                                    .tt{
+                                        color: black;
+                                    }
+                                </style>
+                                <!-- <input value="{{--auth()->user()->name--}}" type="text" class="form-control" id="first" name="name" placeholder="Name"> -->
 
                             </div>
+                            <div class="form-group" style="width:90%; color:#000;">
+                            <h3>Thông tin cần thêm cho sản phẩm!</h3>
+                                <label style="margin-top: -28px;" for="exampleInputEmail1">Chú ý: <span style="color:red;">Hãy điền các thông tin như size giày bạn muốn chọn (từ 35 đến 47) hoặc kích thước chân, dép bạn thường xuyên đi để chúng tôi giúp bạn!!! <br><p style="color:red;"><b style="color:red;">Không điền thông tin thêm, mặc định là size 39.</b><p></span></label>
+                                <textarea style="width:100%; border-color:#ccc;" name="note" value="" id="text_area" rows="10" placeholder="Ví dụ: Sản phẩm 1-Size 38"></textarea>
+                            
+                            </div>
+                            
+                           
                             <!-- <div class="col-md-6 form-group p_star">
                                 <input type="text" class="form-control" id="last" name="name">
                                 <span class="placeholder" data-placeholder="Last name"></span>
@@ -41,18 +58,18 @@
                             <!-- <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="company" name="company" placeholder="Company name">
                             </div> -->
-                            <div class="col-md-6 form-group p_star">
-                                <input value="{{auth()->user()->phone}}" type="text" class="form-control" id="number" name="phone">
+                            <!-- <div class="col-md-6 form-group p_star">
+                                <input value="{{--auth()->user()->phone--}}" type="text" class="form-control" id="number" name="phone">
                                 
-                            </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input value="{{auth()->user()->email}}" type="text" class="form-control" id="email" name="email">
+                            </div> -->
+                            <!-- <div class="col-md-6 form-group p_star">
+                                <input value="{{--auth()->user()->email--}}" type="text" class="form-control" id="email" name="email">
                                 
-                            </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input value="{{auth()->user()->address}}" type="text" class="form-control" id="email" name="address">
+                            </div> -->
+                            <!-- <div class="col-md-6 form-group p_star">
+                                <input value="{{--auth()->user()->address--}}" type="text" class="form-control" id="email" name="address">
                                 
-                            </div>
+                            </div> -->
                             <!-- <div class="col-md-12 form-group p_star">
                                 <select class="country_select" style="display: none;">
                                     <option value="1">Country</option>
@@ -88,32 +105,32 @@
                                     <label for="f-option2">Create an account?</label>
                                 </div>
                             </div> -->
-                            <div class="col-md-12 form-group">
+                            <!-- <div class="col-md-12 form-group">
                                 <div class="creat_account">
                                     <h3>Shipping Details</h3>
                                     <input type="checkbox" id="f-option3" name="selector">
                                     <label for="f-option3">Ship to a different address?</label>
                                 </div>
                                 <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
-                            </div>
+                            </div> -->
                         
                     </div>
                     <div class="col-lg-6">
                         <div class="order_box">
-                            <h2>Your Order</h2>
+                            <h2>Đơn hàng của bạn</h2>
                             <ul class="list">
-                                <li><a href="#">Product <span>Total</span></a></li>
+                                <li><a href="#">Sản phẩm <span>Thành tiền</span></a></li>
                                 @foreach($products as $product)
                                 <input type="hidden" value="{{$product->id}}" name="product_id[]">
                                 <input type="hidden" value="{{$product->qty}}" name="quantity[]">
                                 <input type="hidden" value="{{$product->price}}" name="price">
 
-                                <li><a href="#">{{$product -> name}} <span class="middle">x {{$product->qty}}</span> <span class="last">{{$product->price}}</span></a></li>
+                                <li><a href="#">{{$product -> name}} <span class="middle">x {{$product->qty}}</span> <span class="last">{{number_format($product->price,0,'.',',')}}đ</span></a></li>
                                 @endforeach
                             </ul>
                             <ul class="list list_2">
                                
-                                <li><a href="#">Total <span>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</span></a></li>
+                                <li><a href="#">Tổng tiền <span>{{number_format(\Gloudemans\Shoppingcart\Facades\Cart::total(),0,'.',',')}}đ</span></a></li>
                             </ul>
                             <!-- <div class="payment_item">
                                 <div class="radion_btn">
@@ -134,12 +151,12 @@
                                 <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
                                     account.</p>
                             </div> -->
-                            <div class="creat_account">
+                            <!-- <div class="creat_account">
                                 <input type="checkbox" id="f-option4" name="selector">
                                 <label for="f-option4">I’ve read and accept the </label>
                                 <a href="#">terms &amp; conditions*</a>
-                            </div>
-                            <button class="primary-btn" type="submit" style="width:100%; border:none;">Proceed to Paypal</button>
+                            </div> -->
+                            <button class="primary-btn" type="submit" style="width:100%; border:none;">Tiến hành thanh toán</button>
                         </div>
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-	Trang chủ
+	Giỏ hàng
 @endsection
 
 @section('banner')
@@ -107,7 +107,7 @@
                                     <h5>Tổng tiền</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}đ</h5>
+                                    <h5>{{number_format(\Gloudemans\Shoppingcart\Facades\Cart::total(),0,'.',',')}}đ</h5>
                                 </td>
                             </tr>
                             <!-- <tr class="shipping_area">
@@ -156,7 +156,7 @@
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Tiếp tục mua sắm</a>
+                                        <a class="gray_btn" href="{{route('frontend.product.category',11)}}">Tiếp tục mua sắm</a>
                                         <a class="primary-btn" href="{{route('frontend.order.index',auth()->user()->id)}}">Đặt hàng</a>
                                     </div>
                                 </td>

@@ -9,6 +9,14 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $statusArr = [
+        '0' => 'Hiện', 
+        '1'=>'Ẩn',
+    ];
+    public function getStatusTextAttribute(){
+        return $this->statusArr [$this -> status];
+    }
+
     public function product(){
         return $this->belongsTo(Product::class);
     }

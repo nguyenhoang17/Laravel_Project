@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Hoang Shop | @yield('title')</title>
+	<title>Hoang Shoes | @yield('title')</title>
 	<!--
 		CSS
 		============================================= -->
@@ -114,8 +114,37 @@
   }
   		toastr.error("{{ session('error') }}");
   @endif
+  @if(Session::has('success'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
+  		toastr.success("{{ session('success') }}");
+  @endif
 
  
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+ 
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Bạn có muốn thực hiện thao tác?`,
+              icon: "error",
+              buttons: ["Không","Xóa"],
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              a.href();
+            }
+          });
+      });
+  
 </script>
 	
 	

@@ -13,14 +13,7 @@
 <link rel="stylesheet" href="../../backend/dist/css/adminlte.min.css?v=3.2.0">
 <script defer="" referrerpolicy="origin" src="/cdn-cgi/zaraz/s.js?z=JTdCJTIyZXhlY3V0ZWQlMjIlM0ElNUIlNUQlMkMlMjJ0JTIyJTNBJTIyQWRtaW5MVEUlMjAzJTIwJTdDJTIwTG9nJTIwaW4lMjIlMkMlMjJ3JTIyJTNBMTI4MCUyQyUyMmglMjIlM0E3MjAlMkMlMjJqJTIyJTNBNjA5JTJDJTIyZSUyMiUzQTEyODAlMkMlMjJsJTIyJTNBJTIyaHR0cHMlM0ElMkYlMkZhZG1pbmx0ZS5pbyUyRnRoZW1lcyUyRnYzJTJGcGFnZXMlMkZleGFtcGxlcyUyRmxvZ2luLmh0bWwlMjIlMkMlMjJyJTIyJTNBJTIyaHR0cHMlM0ElMkYlMkZ3d3cuZ29vZ2xlLmNvbSUyRiUyMiUyQyUyMmslMjIlM0EyNCUyQyUyMm4lMjIlM0ElMjJVVEYtOCUyMiUyQyUyMm8lMjIlM0EtNDIwJTJDJTIycSUyMiUzQSU1QiU1RCU3RA=="></script><script nonce="f57a4947-7124-4b2c-80b4-138142e4590d">(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zaraz={deferred:[]},a.zaraz.q=[],a.zaraz._f=function(e){return function(){var t=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:t})}};for(const e of["track","set","ecommerce","debug"])a.zaraz[e]=a.zaraz._f(e);a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];for(n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.zarazData.q=[];a.zaraz.q.length;){const e=a.zaraz.q.shift();a.zarazData.q.push(e)}z.defer=!0,z.referrerPolicy="origin",z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script></head>
 <body class="login-page" style="min-height: 496.802px;">
-    @if($errors-> any())
-            <div class="alert alert-outline-danger" style="color:red;text-align: left; margin-top:20px;"><ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error ."!"}}</li>
-                @endforeach
-                </ul></div>
-
-    @endif
+   
 <div class="login-box">
 <div class="login-logo">
 <a style="color:orange" href="../../index2.html"><b>Hoang Shoes</b></a>
@@ -40,6 +33,9 @@
 </div>
 </div>
 </div>
+@error('email')
+<div class="" style="color:red;margin-top:-18px;">{{ $message }}</div>
+@enderror
 <div class="input-group mb-3">
 <label style="width:100%; margin-bottom:0;" for="exampleInputEmail1">Mật khẩu<span style="color:red;"> *</span></label>
 <input name="password" type="password" class="form-control" placeholder="Password">
@@ -49,6 +45,9 @@
 </div>
 </div>
 </div>
+@error('password')
+<div class="" style="color:red;margin-top:-18px;">{{ $message }}</div>
+@enderror
 <div class="row">
 <div class="col-8">
 <div class="icheck-warning">

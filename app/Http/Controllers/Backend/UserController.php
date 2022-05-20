@@ -16,7 +16,23 @@ class UserController extends Controller
      */
     public function index()
     {
-       $users = User::orderBy('created_at','desc')->paginate(10);
+        $name = \request()-> get('name');
+        $email = \request()->get('email');
+        $phone = \request()->get('phone');
+        // $users_query = DB::table('users')-> 
+        $users_query= User::
+        select();
+            if(!empty($name)){
+                $users_query = $users_query -> where('name', "LIKE", "%$name%");
+            }
+
+            if(!empty($email)){
+                $users_query = $users_query -> where('email', "LIKE", "%$email%");
+            }
+            if(!empty($phone)){
+                $users_query = $users_query -> where('phone', "LIKE", "%$phone%");
+            }
+        $users = $users_query-> orderBy('created_at','desc')->paginate(10);
        return view('backend.users.list')-> with([
            'users' => $users
        ]);
@@ -115,7 +131,23 @@ class UserController extends Controller
     }
 
     public function listDestroy(){
-        $users= User::onlyTrashed()-> paginate(10);
+        $name = \request()-> get('name');
+        $email = \request()->get('email');
+        $phone = \request()->get('phone');
+        // $users_query = DB::table('users')-> 
+        $users_query= User::
+        select();
+            if(!empty($name)){
+                $users_query = $users_query -> where('name', "LIKE", "%$name%");
+            }
+
+            if(!empty($email)){
+                $users_query = $users_query -> where('email', "LIKE", "%$email%");
+            }
+            if(!empty($phone)){
+                $users_query = $users_query -> where('phone', "LIKE", "%$phone%");
+            }
+        $users = $users_query-> onlyTrashed()-> paginate(10);
         return view('backend.users.list_deleted')-> with([
             'users'=> $users
         ]);

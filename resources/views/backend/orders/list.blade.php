@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    List Orders
+    Danh sách đơn hàng
 @endsection
 @section('script')
   <script src="https://kit.fontawesome.com/4829a23a17.js" crossorigin="anonymous"></script>
@@ -16,7 +16,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
               <li class="breadcrumb-item active">Danh sách đơn hàng</li>
             </ol>
           </div><!-- /.col -->
@@ -52,12 +52,14 @@
                       
                       <th>Số lượng</th>
                       <th>Giá</th>
+                      <th>Thông tin thêm</th>
                       <th>Tổng tiền</th>
                       <th>Người mua</th>
                       <th>Email</th>
                       <th>Địa chỉ</th>
                       <th>Số điện thoại</th>
                       <th>Trạng thái</th>
+                      <th>Hành động</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -71,16 +73,18 @@
                         {{$product->pivot->quantity}}</br>
                       @endforeach</td>
                       <td>@foreach($order->products as $product)
-                        {{$product->pivot->price}}</br>
+                        {{number_format($product->pivot->price,0,'.',',')}}đ</br>
                       @endforeach</td>
-                      <td>{{$order->total}}</td>
+                      <td>{{$order->note}}</td>
+                      <td>{{number_format($order->total,0,'.',',')}}đ</td>
                       <td>{{$order->user->name}}</td>
                       <td>{{$order->user->email}}</td>
                       <td>{{$order->user->address}}</td>
                       <td>{{$order->user->phone}}</td>
                       <td style="@if($order->status==5) color:red;@endif ">
                       {{$order->status_text}}
-                          @php
+                      </td>
+                      <td>@php
                               $disabled1="";
                               $disabled2="";
                               $disabled3="";
@@ -98,18 +102,18 @@
                               if($order->status>=4){
                                 $disabled4 = "disabled";
                               }
-                              if($order->status>=6){
+                              if($order->status>=6 | $order->status==4){
                                 $disabled5 = "disabled";
                               }
                             @endphp
-                      <span><select name="forma" onchange="location = this.value;">
-                        <option disabled selected>---Sửa trạng thái---</option>
-                        <option value="" {{$disabled1}}>Đã đặt hàng</option>
-                        <option value="{{route('backend.orders.confirmed',$order->id)}}" {{$disabled2}}>Đơn hàng đã được xác nhận</option>
-                        <option value="{{route('backend.orders.shipping',$order->id)}}" {{$disabled3}}>Đang vận chuyển</option>
-                        <option value="{{route('backend.orders.delivered',$order->id)}}" {{$disabled4}}>Đã giao hàng</option>
-                        <option value="{{route('backend.orders.cancelled',$order->id)}}" {{$disabled5}}>Đơn hàng bị hủy</option>
-                      </select></span>
+                          <span><select name="forma" onchange="location = this.value;">
+                            <option disabled selected>---Sửa trạng thái---</option>
+                            <option value="" {{$disabled1}}>Đã đặt hàng</option>
+                            <option value="{{route('backend.orders.confirmed',$order->id)}}" {{$disabled2}}>Đơn hàng đã được xác nhận</option>
+                            <option value="{{route('backend.orders.shipping',$order->id)}}" {{$disabled3}}>Đang vận chuyển</option>
+                            <option value="{{route('backend.orders.delivered',$order->id)}}" {{$disabled4}}>Đã giao hàng</option>
+                            <option value="{{route('backend.orders.cancelled',$order->id)}}" {{$disabled5}}>Đơn hàng bị hủy</option>
+                          </select></span>
                       </td>
                     </tr>
                     @endforeach

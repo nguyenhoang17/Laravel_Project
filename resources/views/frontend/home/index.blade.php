@@ -14,12 +14,11 @@
 							<div class="row single-slide align-items-center d-flex">
 								<div class="col-lg-5 col-md-6">
 									<div class="banner-content">
-										<h1>Nike New <br>Collection!</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+										<h1>Các sản phẩm<br>Adidas!</h1>
+										<p>Cửa hàng chúng tôi có rất nhiều mẫu giày Adidas mới, bạn hãy lựa chọn cho mình một sản phẩm ngay thôi!!! </p>
 										<div class="add-bag d-flex align-items-center">
-											<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-											<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
+											<a class="add-btn" href="{{route('frontend.product.category',11)}}"><span class="lnr lnr-cross"></span></a>
+											<span class="add-text text-uppercase">Chọn sản phẩm</span>
 										</div>
 									</div>
 								</div>
@@ -30,15 +29,14 @@
 								</div>
 							</div>
 							<!-- single-slide -->
-							<div class="row single-slide">
+							<div class="row single-slide align-items-center">
 								<div class="col-lg-5">
 									<div class="banner-content">
-										<h1>Nike New <br>Collection!</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-											dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+									<h1>Các sản phẩm<br>Nike!</h1>
+									<p>Cửa hàng chúng tôi có rất nhiều mẫu giày Nike mới, bạn hãy lựa chọn cho mình một sản phẩm ngay thôi!!! </p>
 										<div class="add-bag d-flex align-items-center">
-											<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-											<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
+											<a class="add-btn" href="{{route('frontend.product.category',11)}}"><span class="lnr lnr-cross"></span></a>
+											<span class="add-text text-uppercase">Chọn sản phẩm</span>
 										</div>
 									</div>
 								</div>
@@ -108,15 +106,15 @@
 	<section class="category-area">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-8 col-md-12">
+				<div class="col-lg-12 col-md-12">
 					<div class="row">
-						<div class="col-lg-8 col-md-8">
+						<div class="col-lg-8 col-md-12">
 							<div class="single-deal">
 								<div class="overlay"></div>
 								<img class="img-fluid w-100" src="/img/category/c1.jpg" alt="">
 								<a href="/img/category/c1.jpg" class="img-pop-up" target="_blank">
 									<div class="deal-details">
-										<h6 class="deal-title">Sneaker for Sports</h6>
+										<h6 class="deal-title">Giày thời trang đẹp</h6>
 									</div>
 								</a>
 							</div>
@@ -127,7 +125,7 @@
 								<img class="img-fluid w-100" src="/img/category/c2.jpg" alt="">
 								<a href="/img/category/c2.jpg" class="img-pop-up" target="_blank">
 									<div class="deal-details">
-										<h6 class="deal-title">Sneaker for Sports</h6>
+										<h6 class="deal-title">Giày chống thấm</h6>
 									</div>
 								</a>
 							</div>
@@ -138,7 +136,7 @@
 								<img class="img-fluid w-100" src="/img/category/c3.jpg" alt="">
 								<a href="/img/category/c3.jpg" class="img-pop-up" target="_blank">
 									<div class="deal-details">
-										<h6 class="deal-title">Product for Couple</h6>
+										<h6 class="deal-title">Giày Nike</h6>
 									</div>
 								</a>
 							</div>
@@ -149,14 +147,14 @@
 								<img class="img-fluid w-100" src="/img/category/c4.jpg" alt="">
 								<a href="/img/category/c4.jpg" class="img-pop-up" target="_blank">
 									<div class="deal-details">
-										<h6 class="deal-title">Sneaker for Sports</h6>
+										<h6 class="deal-title">Giày thể thao chất lượng</h6>
 									</div>
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
+				<!-- <div class="col-lg-4 col-md-6">
 					<div class="single-deal">
 						<div class="overlay"></div>
 						<img class="img-fluid w-100" src="/img/category/c5.jpg" alt="">
@@ -166,7 +164,7 @@
 							</div>
 						</a>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>
@@ -207,9 +205,9 @@
 					</div>
 				</div>
 				<div class="row">
-				@foreach($coming_products as $coming_product)
+				@foreach($selling_products as $selling_product)
 						<div class="col-lg-3 col-md-6">
-							@include('frontend.home.components.product_item',['product'=> $coming_product])
+							@include('frontend.home.components.product_item',['product'=> $selling_product])
 						</div>
 					@endforeach
 				</div>
@@ -226,7 +224,7 @@
 					<div class="row clock_sec clockdiv" id="clockdiv">
 						<div class="col-lg-12">
 							<h1>Ưu đãi sắp kết thúc!</h1>
-							<p>Who are in extremely love with eco friendly system.</p>
+							<p>Dành cho những bạn yêu thích Nike</p>
 						</div>
 						<div class="col-lg-12">
 							<div class="row clock-wrap">
@@ -249,38 +247,36 @@
 							</div>
 						</div>
 					</div>
-					<a href="" class="primary-btn">Mua ngay</a>
+					<a href="{{route('frontend.product.brand',6)}}" class="primary-btn">Chọn ngay</a>
 				</div>
 				<div class="col-lg-6 no-padding exclusive-right">
 					<div class="active-exclusive-product-slider">
 						<!-- single exclusive carousel -->
 						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="/img/product/e-p1.png" alt="">
+							<img class="img-fluid" src="{{$latest_products[0]->image->path}}" alt="">
 							<div class="product-details">
 								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
+									<h6>{{$latest_products[0]->price_sale_format}}</h6>
+									<h6 class="l-through">{{$latest_products[0]->price_origin_format}}</h6>
 								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
+								<h4>{{$latest_products[0]->name}}</h4>
 								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
+									<a class="add-btn" href="{{route('frontend.carts.add',$latest_products[0]->id)}}"><span class="ti-bag"></span></a>
 									<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
 								</div>
 							</div>
 						</div>
 						<!-- single exclusive carousel -->
 						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="/img/product/e-p1.png" alt="">
+							<img class="img-fluid" src="{{$latest_products[1]->image->path}}" alt="">
 							<div class="product-details">
 								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
+									<h6>{{$latest_products[1]->price_sale_format}}</h6>
+									<h6 class="l-through">{{$latest_products[1]->price_origin_format}}</h6>
 								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
+								<h4>{{$latest_products[1]->name}}</h4>
 								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
+									<a class="add-btn" href="{{route('frontend.carts.add',$latest_products[1]->id)}}"><span class="ti-bag"></span></a>
 									<span class="add-text text-uppercase">Thêm vào giỏ hàng</span>
 								</div>
 							</div>
@@ -296,21 +292,11 @@
 	<section class="brand-area section_gap">
 		<div class="container">
 			<div class="row">
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="/img/brand/1.png" alt="">
+				@foreach($brands as $brand)
+				<a class="col single-img" href="{{route('frontend.product.brand',['id'=>$brand->id])}}">
+					<img class="img-fluid d-block mx-auto" src="{{$brand->image_url_full}}" alt="">
 				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="/img/brand/2.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="/img/brand/3.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="/img/brand/4.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="/img/brand/5.png" alt="">
-				</a>
+				@endforeach
 			</div>
 		</div>
 	</section>

@@ -25,10 +25,13 @@ Route::name('frontend.')-> namespace('Frontend')-> group(function(){
         Route::get('/','HomeController@index' )-> name('home');
     //ProductByCategory
         Route::get('/productsByCategory/{id}','ProductsByCategoryController@productByCategory' )-> name('product.category');
+        Route::get('/productsByBrand/{id}','ProductsByCategoryController@productByBrand' )-> name('product.brand');
     //ProductDetail
         Route::get('/productDetail/{id}','ProductDetailController@productDetail' )-> name('product.detail');
         Route::post('/addComment/{id}','ProductDetailController@addComment')->name('comment.add');
         Route::post('/addreview/{id}','ProductDetailController@addReview')->name('review.add');
+    //ProductsSearch
+        Route::get('/productsSearch','ProductsSearchController@index' )-> name('product.search');
     //Cart
         Route::get('/carts/index','CartController@index')->name('carts.index');
         Route::get('/carts/add/{id}','CartController@add')->name('carts.add');

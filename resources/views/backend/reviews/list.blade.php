@@ -54,7 +54,7 @@
                       <th>Trạng thái</th>
                       <th>Ngày tạo</th>
                       <th>Ngày sửa</th>
-                      <th>Action</th>
+                      <th>Hành động</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -69,9 +69,11 @@
                       <td>{{$review-> created_at}}</td>
                       <td>{{$review->updated_at}}</td>
                       <td style="display:flex;">
+                          @if($review->status==0)
                           <a href="{{route('backend.reviews.hide',$review->id)}}" type="button" class= "btn-edit btn btn-danger"><i class="fa-solid fa-eye-slash"></i></a>
-                          <a style="margin-left:5px;" href="{{route('backend.reviews.show',$review->id)}}" type="button" class= "btn-edit btn btn-success"><i class="fa-solid fa-eye"></i></a>
-                          
+                          @else
+                          <a style="" href="{{route('backend.reviews.show',$review->id)}}" type="button" class= "btn-edit btn btn-success"><i class="fa-solid fa-eye"></i></a>
+                          @endif
                          
                       </td>
                     </tr>

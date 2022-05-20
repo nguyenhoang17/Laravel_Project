@@ -59,6 +59,9 @@ class ProductDetailController extends Controller
         $review->content = $data['review'];
         $review->start_count=$data['start'];
         $review->save();
+        $product = Product::find($id);
+        $product->review_count +=1;
+        $product->save();
         return redirect()->route('frontend.product.detail',$id);
     }
 }

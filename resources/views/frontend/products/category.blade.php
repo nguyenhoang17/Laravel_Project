@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-	Trang chủ
+	Danh mục sản phẩm
 @endsection
 
 @section('banner')
@@ -35,6 +35,17 @@
 						@endforeach
 					</ul>
 				</div>
+				<div class="sidebar-categories">
+					<div class="head">Nhãn hiệu</div>
+					<ul class="main-categories">
+						@foreach($brands as $brand)
+                        <li class="main-nav-list "><a style="" href="{{route('frontend.product.brand', $brand->id)}}" ><span class="lnr lnr-arrow-right"></span>{{$brand-> name}}<span class="number">({{count($brand->products)}})</span></a>
+							
+						</li>
+						@endforeach
+					</ul>
+				</div>
+				
 				<!-- <div class="sidebar-filter mt-50">
 					<img width="100%" src="/img/banner_ctg.webp" alt="">
 				</div> -->
@@ -121,6 +132,7 @@
 									])
 							</div>
 						@endforeach
+						
 					</div>
 				</section>
 				<div style="text-align:center;">{{$productsByCategory->links()}}</div>

@@ -11,9 +11,14 @@ class BrandController extends Controller
 {
     public function index()
     {
+        $name = \request()-> get('name');
+        // $users_query = DB::table('users')-> 
+        $brands_query= Brand::select();
+            if(!empty($name)){
+                $brands_query = $brands_query -> where('name', "LIKE", "%$name%");
+            }
         
-        
-        $brands = Brand::orderBy('created_at','desc')->paginate(10);
+        $brands = $brands_query->orderBy('created_at','desc')->paginate(10);
 
         
         
@@ -36,7 +41,10 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-      
+        $validated = $request -> validate([
+            'name' => 'required|unique:brands|max:255|string',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
         $data=$request-> all(); 
         $brand = new Brand();
         $brand->name = $data['name'];
@@ -70,9 +78,10 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validated = $request -> validate([
-        //     'name' => 'required|unique:categories|max:255',
-        // ]);
+        $validated = $request -> validate([
+            'name' => 'required|unique:brand|max:255|string',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+        ]);
         $data= $request-> all();
 
         $brand = Brand::find($id);

@@ -13,27 +13,19 @@ class Product extends Model
 
     const STATUS_ACTIVE = 1;
     const STATUS_HIDDEN = 2;
-    const STOP_SELL = 3;
+    const STATUS_STOP_SELL = 3;
    
 
     protected $statusArr = [
-        '1'=>'Còn Hàng', 
-        '2'=>'Hết hàng',
-        '3'=>'Ngừng bán'
-    
-
+        self::STATUS_ACTIVE =>'Còn Hàng', 
+        self::STATUS_HIDDEN =>'Hết hàng',
+        self::STATUS_STOP_SELL=>'Ngừng bán'
     ];
-    public static $statusArr2 = [
-        '1'=>'Còn Hàng', 
-        '2'=>'Hết hàng',
-        '3'=>'Ngừng bán'
-    
-
-    ];
+   
 
     public function setNameAttribute($name){
-        $this -> attributes['name'] = $name;
-        $this -> attributes['slug']= Str::slug($name);
+        $this->attributes['name'] = $name;
+        $this->attributes['slug']= Str::slug($name);
 
     }
 
@@ -47,6 +39,10 @@ class Product extends Model
 
     public function getPriceOriginFormatAttribute(){
         return number_format($this->price_origin,0,'','.').'đ';
+    }
+
+    public function getPriceInputFormatAttribute(){
+        return number_format($this->price_input,0,'','.').'đ';
     }
 
     public function user(){
@@ -82,4 +78,11 @@ class Product extends Model
     public function image(){
         return $this->hasOne(Image::class,'product_id');
     }
+    public static $statusArr2 = [
+        self::STATUS_ACTIVE =>'Còn Hàng', 
+        self::STATUS_HIDDEN =>'Hết hàng',
+        self::STATUS_STOP_SELL=>'Ngừng bán'
+    
+
+    ];
 }

@@ -16,9 +16,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $name = \request()-> get('name');
+        // $users_query = DB::table('users')-> 
+        $categories_query= Category::
+        select();
+            if(!empty($name)){
+                $categories_query = $categories_query -> where('name', "LIKE", "%$name%");
+            }
         
         // $categories = DB::table('categories')->orderBy('created_at','desc')->get();
-        $categories = Category::orderBy('created_at','desc')->paginate(3);
+        $categories = $categories_query->orderBy('created_at','desc')->paginate(3);
 
         
         
@@ -43,9 +50,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // $validated = $request -> validate([
-        //     'name' => 'required|unique:categories|max:255',
-        // ]);
+        $validated = $request -> validate([
+            'name' => 'required|unique:categories|max:255|string',
+        ]);
         $data=$request-> all(); 
         // DB::table('categories')-> insert([
         //     'name' => $data['name'],
@@ -56,7 +63,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category -> name = $data['name'];
         $category -> save();
-        $request->session()->flash('success', 'Created category successfully');
+        $request->session()->flash('success', 'Tạo danh mục thành công');
         return redirect()-> route('backend.categories.index');
     }
 
@@ -93,7 +100,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request -> validate([
-            'name' => 'required|unique:categories|max:255',
+            'name' => 'required|unique:categories|max:255|string',
         ]);
         $data= $request-> only('name');
         // DB::table('categories')-> where('id', $id)
@@ -106,7 +113,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category -> name = $data['name'];
         $category-> save();
-        $request->session()->flash('success', 'Updated post successfully');
+        $request->session()->flash('success', 'Cập nhật danh mục thành công');
         return redirect()-> route('backend.categories.index');
     }
 
@@ -122,7 +129,7 @@ class CategoryController extends Controller
         // DB::table('categories')-> where('id',$id)->delete();
 
         Category::find($id)->delete($id);
-        return redirect()-> route('backend.categories.index')->with('success', 'Deleted category successfully');
+        return redirect()-> route('backend.categories.index')->with('success', 'Xóa danh mục thành công');
     }
 
     // //List da xoa mem

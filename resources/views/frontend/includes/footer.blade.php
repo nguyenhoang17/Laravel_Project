@@ -5,15 +5,14 @@
 					<div class="single-footer-widget">
 						<h6>Chúng tôi</h6>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
+							HoangShoes chuyên cung cấp các loại giày chính hãng, chất lượng cao
 						</p>
 					</div>
 				</div>
 				<div class="col-lg-4  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h6>Nhận tin mới</h6>
-						<p>Stay update with our latest</p>
+						<p>Cập nhật thông tin mới nhất của chúng tôi</p>
 						<div class="" id="mc_embed_signup">
 
 							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
@@ -57,7 +56,7 @@
 				<div class="col-lg-2 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h6>Theo dõi chúng tôi</h6>
-						<p>Let us be social</p>
+						<p>Để chúng tôi mau chóng phát triển</p>
 						<div class="footer-social d-flex align-items-center">
 							<a href="#"><i class="fa fa-facebook"></i></a>
 							<a href="#"><i class="fa fa-twitter"></i></a>

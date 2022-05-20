@@ -23,18 +23,23 @@ class CommentController extends Controller
     }
     public function hide($id){
        $comment = Comment::find($id);
-       $comment->status = 1;
-       $comment->save();
-       return redirect()-> route('backend.comments.index');
+       if($comment->status==0){
+            $comment->status = 1;
+            $comment->save();
+            return redirect()-> route('backend.comments.index');
+       }
+       
 
 
     }
 
     public function show($id){
         $comment = Comment::find($id);
-        $comment->status = 0;
-        $comment->save();
-        return redirect()-> route('backend.comments.index');
+        if($comment->status==1){
+            $comment->status = 0;
+            $comment->save();
+            return redirect()-> route('backend.comments.index');
+        }
  
  
      }

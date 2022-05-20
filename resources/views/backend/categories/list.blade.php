@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    List Categories
+    Danh sách danh mục
 @endsection
 @section('script')
   <script src="https://kit.fontawesome.com/4829a23a17.js" crossorigin="anonymous"></script>
@@ -12,11 +12,11 @@
 <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Danh sách Danh Mục</h1>
+            <h1 class="m-0">Danh sách danh mục</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
               <li class="breadcrumb-item active">Danh sách danh mục</li>
             </ol>
           </div><!-- /.col -->
@@ -40,6 +40,14 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-12">
+          <form>
+            <div class="input-group input-group-sm" style="width: 40%; margin-bottom: 10px;">
+              <input type="text" name="name" class="form-control float-right mx-1" placeholder="Tên" value="{{request()->get('name')}}">
+                <button type="submit" class="btn btn-default" style="height:32.5px; margin-left:5px;padding-top:3px;">
+                  Lọc kết quả
+                </button>
+            </div>
+          </form>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><a href = "{{route('backend.categories.create')}}" type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i> Tạo danh mục</a> </h3>

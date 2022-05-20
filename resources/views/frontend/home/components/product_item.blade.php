@@ -17,18 +17,19 @@
 										<span class="ti-bag"></span>
 										<p class="hover-text">Thêm vào giỏ hàng</p>
 									</a>
-									<a href="" class="social-info">
+									<!-- <a href="" class="social-info">
 										<span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a>
-									<a href="" class="social-info">
+										<p class="hover-text">Yêu thích</p>
+									</a> -->
+									<!-- <a href="" class="social-info">
 										<span class="lnr lnr-sync"></span>
 										<p class="hover-text">compare</p>
-									</a>
-									<a href="{{route('frontend.product.detail',$product -> id)}}" class="social-info">
+									</a> -->
+									<a href="{{route('frontend.product.detail',['id' => $product->id])}}" class="social-info">
 										<span class="lnr lnr-move"></span>
 										<p class="hover-text">Chi tiết</p>
 									</a>
+									<p style="float: right;">Đã bán: {{$product->sell_count}}</p>
 								</div>
 							</div>
 						</div>

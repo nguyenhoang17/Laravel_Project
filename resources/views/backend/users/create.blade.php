@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Registration Page</title>
+<title>HoangShoes | Thêm tài khoản</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
 
@@ -23,11 +23,11 @@
     @endif
 <div class="register-box">
 <div class="register-logo">
-<a href="../../index2.html"><b>Admin</b>LTE</a>
+<a href="../../index2.html"><b>HoangShoes</b></a>
 </div>
 <div class="card">
 <div class="card-body register-card-body">
-<p class="login-box-msg">Register a new membership</p>
+<p class="login-box-msg">Đăng ký tài khoản mới</p>
 <form action="{{ route('backend.users.store') }}" method="post" enctype="multipart/form-data">
 @csrf
 
@@ -56,7 +56,11 @@
 </div>
 </div>
 <div class="input-group mb-3">
-<input name="role" type="text" class="form-control" placeholder="role">
+<select id="roles" name="role">
+  <option selected value="user">Khách hàng</option>
+  <option value="admod">Quản trị viên</option>
+  
+</select>
 <div class="input-group-append">
 <div class="input-group-text">
 <span><i class="fa-solid fa-book"></i></span>
@@ -102,7 +106,7 @@
 
 
 <div class="col-4">
-<button type="submit" class="btn btn-primary btn-block">Lưu</button>
+<button type="submit" class="btn btn-primary btn-block">Thêm tài khoản</button>
 </div>
 
 </div>

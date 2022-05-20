@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('title')
-    List Products
+    Danh sách bình luận
 @endsection
 @section('script')
   <script src="https://kit.fontawesome.com/4829a23a17.js" crossorigin="anonymous"></script>
@@ -12,12 +12,12 @@
 <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Danh sách sản phẩm</h1>
+            <h1 class="m-0">Danh sách bình luận</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Danh sách sản phẩm</li>
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Danh sách bình luận</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -67,9 +67,11 @@
                       <td>{{$comment-> created_at}}</td>
                       <td>{{$comment->updated_at}}</td>
                       <td style="display:flex;">
+                      @if($comment->status==0)
                           <a href="{{route('backend.comments.hide',$comment->id)}}" type="button" class= "btn-edit btn btn-danger"><i class="fa-solid fa-eye-slash"></i></a>
-                          <a style="margin-left:5px;" href="{{route('backend.comments.show',$comment->id)}}" type="button" class= "btn-edit btn btn-success"><i class="fa-solid fa-eye"></i></a>
-                          
+                      @else
+                          <a style="" href="{{route('backend.comments.show',$comment->id)}}" type="button" class= "btn-edit btn btn-success"><i class="fa-solid fa-eye"></i></a>
+                        @endif
                          
                       </td>
                     </tr>

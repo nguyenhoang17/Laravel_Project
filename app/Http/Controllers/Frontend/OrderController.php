@@ -21,8 +21,8 @@ class OrderController extends Controller
         ]);
     }
 
-    public function store(){
-       
+    public function store(Request $request){
+        $data=$request-> all();
 
         
         $products = Cart::content();
@@ -30,6 +30,7 @@ class OrderController extends Controller
         $order = new Order();
         $order-> user_id = auth()->user()->id;
         $order -> total = Cart::total();
+        $order->note=$data['note'];
         $order->save();
         foreach($products as $item){
             $data = Product::where('id','=',$item->id)->get();
@@ -59,7 +60,7 @@ class OrderController extends Controller
 
     }
     public function orderPlaced($id){
-        $orders=Order::where('user_id','=',$id)->get();
+        $orders=Order::where('user_id','=',$id)->orderBy('status')->orderBy('created_at','DESC')->get();
         // dd($orders);
         return view('frontend.orders.detail')->with([
             'orders' => $orders
