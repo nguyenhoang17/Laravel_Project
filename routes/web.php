@@ -54,7 +54,10 @@ Route::prefix('backend')
 ->middleware(['auth','role:admin,admod'])
 -> group(function(){
     //Dasboard
-        Route::get('dashboard','DashboardController@index');
+        Route::get('/dashboard','DashboardController@index');
+        Route::post('/fillter-by-date','DashboardController@fillterByDate')->name('dashboard.statistic.day');
+        Route::post('/dashboard_fillter','DashboardController@dashboardFillter')->name('dashboard.statistic.fillter');
+
     //Category
         Route::prefix('categories')-> name('categories.')-> group(function(){
             Route::get('/','CategoryController@index')-> name('index');
@@ -117,6 +120,7 @@ Route::prefix('backend')
             Route::get('/delivered/{id}','OrderController@delivered')->name('delivered');
             Route::get('/cancelled/{id}','OrderController@cancelled')->name('cancelled');
         });
+  
 
         
 });

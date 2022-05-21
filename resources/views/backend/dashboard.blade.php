@@ -1,17 +1,17 @@
 @extends('backend.layouts.master')
 @section('title')
-    Dashboard
+    Trang chủ
 @endsection
 @section('content-header')
 <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Bảng điều khiển</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active"></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -41,14 +41,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{number_format($turnover,0,'.',',')}}đ</h3>
 
-                <p>Doanh thu</p>
+                <p>Doanh thu trong 1 năm qua</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Chi tiết ở phần thống kê doanh thu </a>
             </div>
           </div>
           <!-- ./col -->
@@ -66,152 +66,135 @@
               <a href="{{route('backend.users.index')}}" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <!-- <div class="col-lg-3 col-6">
-            
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Số Blog</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
+          
+        </div>
+        <div class="container-fluid">
+          <h3>Thống kê doanh thu</h3>
+         
+          <form class="row" action="" autocomplete="off">
+            @csrf
+            <div class="col-2">
+              <p>Từ ngày: <input type="text" id="datepicker" class="form-control"></p>
+              
             </div>
-          </div> -->
-          <!-- ./col -->
+            <div class="col-2">
+              <p>Đến ngày: <input type="text" id="datepicker2" class="form-control"></p>
+              <p><input type="button" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="Lọc kết quả"></p>
+            </div>
+            <div class="col-2">
+              <p>Lọc theo: <select class="form-control dashboard-filter" style="width:100%; border-color:#ccc;" name="" id="">
+                <option value="" selected disabled>--Chọn--</option>
+                <option value="7ngay" >7 ngày</option>
+                <option value="thangtruoc" >Tháng trước</option>
+                <option value="thangnay" >Tháng này</option>
+                <option value="365ngayqua" >365 ngày qua</option>
+
+              </select></p>
+            </div>
+          </form>
+
+          <div class="col-12">
+          <div id="myfirstchart" style="height: 250px;"></div>
+          </div>
+          
         </div>
         <!-- /.row -->
         <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                   </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                  </div>
-                </div>
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
 
-            <!-- Map card -->
-            <div class="card bg-gradient-primary">
-              <div class="card-header border-0">
-                <h3 class="card-title">
-                  <i class="fas fa-map-marker-alt mr-1"></i>
-                  Visitors
-                </h3>
-                <!-- card tools -->
-                <div class="card-tools">
-                  <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                    <i class="far fa-calendar-alt"></i>
-                  </button>
-                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-                <!-- /.card-tools -->
-              </div>
-              <div class="card-body">
-                <div id="world-map" style="height: 250px; width: 100%;"></div>
-              </div>
-              <!-- /.card-body-->
-              <div class="card-footer bg-transparent">
-                <div class="row">
-                  <div class="col-4 text-center">
-                    <div id="sparkline-1"></div>
-                    <div class="text-white">Visitors</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <div id="sparkline-2"></div>
-                    <div class="text-white">Online</div>
-                  </div>
-                  <!-- ./col -->
-                  <div class="col-4 text-center">
-                    <div id="sparkline-3"></div>
-                    <div class="text-white">Sales</div>
-                  </div>
-                  <!-- ./col -->
-                </div>
-                <!-- /.row -->
-              </div>
-            </div>
-            <!-- /.card -->
-
-            <!-- Calendar -->
-            <div class="card bg-gradient-success">
-              <div class="card-header border-0">
-
-                <h3 class="card-title">
-                  <i class="far fa-calendar-alt"></i>
-                  Calendar
-                </h3>
-                <!-- tools card -->
-                <div class="card-tools">
-                  <!-- button with a dropdown -->
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-                <!-- /. tools -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body pt-0">
-                <!--The calendar -->
-                <div id="calendar" style="width: 100%"></div>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
-        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
+@endsection
+@section('css')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+@endsection
+@section('script')
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $( function() {
+      $( "#datepicker" ).datepicker({
+        dateFormat:"yy-mm-dd"
+      });
+      $( "#datepicker2" ).datepicker({
+        dateFormat:"yy-mm-dd"
+      });
+    });
+  });
+  
+  </script>
+  <script>
+   $(document).ready(function(){
+    
+    $('#btn-dashboard-filter').click(function(){
+      var _token = $('input[name = "_token"]').val();
+      var from_date = $('#datepicker').val();
+      var to_date = $('#datepicker2').val();
+      
+      $.ajax({
+        url:'{{route('backend.dashboard.statistic.day')}}',
+        method:"POST",
+        dataType:"JSON",
+        data:{from_date:from_date,to_date:to_date,_token:_token},
+
+        success:function(data){
+          chart.setData(data);
+        }
+      });
+    });
+    $('.dashboard-filter').change(function(){
+      var dashboard_value = $(this).val();
+      var _token = $('input[name = "_token"]').val();
+      
+      
+      $.ajax({
+        url:'{{route('backend.dashboard.statistic.fillter')}}',
+        method:"POST",
+        dataType:"JSON",
+        data:{dashboard_value:dashboard_value, _token:_token},
+
+        success:function(data){
+          if(data==null){
+            data=[
+              {period: "Không có dữ liệu", order: 0, sales: "0", profit: "0", quantity: 0}
+            ]
+          }
+          chart.setData(data);
+         
+        }
+      });
+    });
+
+   var chart = new Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'myfirstchart',
+    parseTime:false,
+ 
+      xkey: 'period',
+      
+      ykeys: ['order','sales', 'profit', 'quantity'],
+      behaveLikeLine: true,
+
+      labels: ['đơn hàng', 'doanh số', 'lợi nhuận', 'số lượng']
+});
+filter30day();
+function filter30day() {
+  let dashboard_value = 'thangnay';
+      var _token = $('input[name = "_token"]').val();
+      $.ajax({
+        url:'{{route('backend.dashboard.statistic.fillter')}}',
+        method:"POST",
+        dataType:"JSON",
+        data:{dashboard_value:dashboard_value, _token:_token},
+        success:function(data){
+          chart.setData(data);
+        }
+      });
+    }
+  });
+  </script>
 @endsection

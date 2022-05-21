@@ -31,7 +31,7 @@
 								<tr>
 									<th scope="col">Sản Phẩm</th>
 									<th scope="col">Số Lượng</th>
-									<th scope="col">Chú ý</th>
+									<!-- <th scope="col">Chú ý</th> -->
 									<th scope="col">Giá tiền</th>
 									<th scope="col">Tổng</th>
 								</tr>

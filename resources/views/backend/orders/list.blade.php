@@ -28,6 +28,15 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-12">
+          <!-- <form method="GET">
+            <div class="input-group input-group-sm" style="width: 40%; margin-bottom: 10px;">
+              <input type="date" name="date_from" class="form-control float-right mx-1" placeholder="" value="{{request()->get('date_from')}}">
+              <input type="date" name="date_to" class="form-control float-right mx-1" placeholder="" value="{{request()->get('date_to')}}">
+                <button type="submit" class="btn btn-default" style="height:32.5px; margin-left:5px;padding-top:3px;">
+                  Lọc kết quả
+                </button>
+            </div>
+          </form> -->
             <div class="card">
               <div class="card-header">
                 <div class="card-tools">

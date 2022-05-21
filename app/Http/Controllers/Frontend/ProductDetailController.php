@@ -24,6 +24,24 @@ class ProductDetailController extends Controller
         $reviews = Review::whereHas('product', function($query) use($id){
             $query-> where('product_id', '=', $id);
         })->where('status','=',0)->limit(6)->orderBy('created_at','DESC')-> get();
+        $star5 = Review::whereHas('product', function($query) use($id){
+            $query-> where('product_id', '=', $id);
+        })->where('status','=',0)->where('start_count','=',5)->orderBy('created_at','DESC')-> get();
+        $star4 = Review::whereHas('product', function($query) use($id){
+            $query-> where('product_id', '=', $id);
+        })->where('status','=',0)->where('start_count','=',4)->orderBy('created_at','DESC')-> get();
+        $star3 = Review::whereHas('product', function($query) use($id){
+            $query-> where('product_id', '=', $id);
+        })->where('status','=',0)->where('start_count','=',3)->orderBy('created_at','DESC')-> get();
+        $star2 = Review::whereHas('product', function($query) use($id){
+            $query-> where('product_id', '=', $id);
+        })->where('status','=',0)->where('start_count','=',2)->orderBy('created_at','DESC')-> get();
+        $star1 = Review::whereHas('product', function($query) use($id){
+            $query-> where('product_id', '=', $id);
+        })->where('status','=',0)->where('start_count','=',1)->orderBy('created_at','DESC')-> get();
+        $star_sum = Review::whereHas('product', function($query) use($id){
+            $query-> where('product_id', '=', $id);
+        })->where('status','=',0)->sum('start_count');
         $related_products = Product::where('status',Product::STATUS_ACTIVE)->where('price_sale','!=',0)->limit(6)->get();
         
         return view('frontend.products.detail')-> with([
@@ -32,7 +50,13 @@ class ProductDetailController extends Controller
             'comments'=>$comments,
             'orders'=>$orders,
             'reviews'=>$reviews,
-            'related_products'=>$related_products
+            'related_products'=>$related_products,
+            'star5' => $star5,
+            'star4' => $star4,
+            'star3' => $star3,
+            'star2' => $star2,
+            'star1' => $star1,
+            'star_sum' => $star_sum
             
         ]);
     }
@@ -45,7 +69,7 @@ class ProductDetailController extends Controller
             $comment->product_id = $id;
             $comment->content = $data['content'];
             $comment->save();
-            return redirect()->route('frontend.product.detail',$id);
+            return redirect()->route('frontend.product.detail',$id)->with('success','Thêm bình luận thành công');
         }
         
     }
@@ -62,6 +86,6 @@ class ProductDetailController extends Controller
         $product = Product::find($id);
         $product->review_count +=1;
         $product->save();
-        return redirect()->route('frontend.product.detail',$id);
+        return redirect()->route('frontend.product.detail',$id)->with('success','Thêm đánh giá thành công');
     }
 }

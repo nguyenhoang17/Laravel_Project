@@ -223,25 +223,31 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="row total_rate mb-5">
-								<div class="col-12">
+								<div class="col-6">
 									<div class="box_total">
 										<h5>Tổng thể</h5>
-										<h6>Sản phẩm này có {{count($reviews)}} Đánh giá</h6>
+										<h4>@if($star_sum/count($reviews) >=1 && $star_sum/count($reviews) < 2 ) 1.0
+											@elseif($star_sum/count($reviews) >=2 && $star_sum/count($reviews) < 3 ) 2.0
+											@elseif($star_sum/count($reviews) >=3 && $star_sum/count($reviews) < 4 ) 3.0
+											@elseif($star_sum/count($reviews) >=4 && $star_sum/count($reviews) <= 5 ) 4.0
+											@endif
+										</h4>
+										<h6>({{count($reviews)}} Đánh giá)</h6>
 										<!-- <h6>({{--count($reviews)--}} Đánh giá)</h6> -->
 									</div>
 								</div>
-								<!-- <div class="col-6">
+								<div class="col-6">
 									<div class="rating_list">
 										<h3>Dựa trên {{count($reviews)}} Đánh giá</h3>
 										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> {{count($star5)}}</a></li>
+											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> {{count($star4)}}</a></li>
+											<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> {{count($star3)}}</a></li>
+											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i> {{count($star2)}}</a></li>
+											<li><a href="#">1 Star <i class="fa fa-star"></i> {{count($star1)}}</a></li>
 										</ul>
 									</div>
-								</div>  -->
+								</div> 
 							</div>
 							<div class="review_list">
 								@foreach($reviews as $review)
