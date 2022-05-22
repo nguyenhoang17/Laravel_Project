@@ -226,10 +226,11 @@
 								<div class="col-6">
 									<div class="box_total">
 										<h5>Tổng thể</h5>
-										<h4>@if($star_sum/count($reviews) >=1 && $star_sum/count($reviews) < 2 ) 1.0
-											@elseif($star_sum/count($reviews) >=2 && $star_sum/count($reviews) < 3 ) 2.0
-											@elseif($star_sum/count($reviews) >=3 && $star_sum/count($reviews) < 4 ) 3.0
-											@elseif($star_sum/count($reviews) >=4 && $star_sum/count($reviews) <= 5 ) 4.0
+										<h4>@if(count($reviews)!=0 && $star_sum/count($reviews) >=1 && $star_sum/count($reviews) < 2 ) 1.0
+											@elseif(count($reviews)!=0 && $star_sum/count($reviews) >=2 && $star_sum/count($reviews) < 3 ) 2.0
+											@elseif(count($reviews)!=0 && $star_sum/count($reviews) >=3 && $star_sum/count($reviews) < 4 ) 3.0
+											@elseif(count($reviews)!=0 && $star_sum/count($reviews) >=4 && $star_sum/count($reviews) <= 5 ) 4.0
+											@elseif(count($reviews)==0) 0.0
 											@endif
 										</h4>
 										<h6>({{count($reviews)}} Đánh giá)</h6>

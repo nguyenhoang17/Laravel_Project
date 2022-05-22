@@ -164,7 +164,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {$validated = $request -> validate([
-        'name' => 'required|max:255|string',
+        'name' => 'required|max:255|string|unique:products',
         'images[]' => 'mimes:jpg,png,jpeg,gif,svg|max:204',
         'description'=> 'required|string',
         'category_id'=> 'required|numeric',
