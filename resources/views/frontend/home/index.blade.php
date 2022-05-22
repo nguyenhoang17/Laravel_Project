@@ -178,6 +178,25 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
+							<h1>Sản phẩm bán chạy</h1>
+							<p>Dưới đây là các sản phẩm bán chạy nhất của chúng tôi, bạn có thể lựa chọn và sắm cho mình 1 đôi giày ứng ý!!!</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+				@foreach($selling_products as $selling_product)
+						<div class="col-lg-3 col-md-6">
+							@include('frontend.home.components.product_item',['product'=> $selling_product])
+						</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
+		<div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
 							<h1>Sản phẩm mới nhất</h1>
 							<p>Dưới đây là các sản phẩm mới nhất của chúng tôi, bạn có thể lựa chọn và sắm cho mình 1 đôi giày ứng ý!!!</p>
 						</div>
@@ -194,25 +213,7 @@
 			</div>
 		</div>
 		<!-- single product slide -->
-		<div class="single-product-slider">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-6 text-center">
-						<div class="section-title">
-							<h1>Sản phẩm bán chạy</h1>
-							<p>Dưới đây là các sản phẩm bán chạy nhất của chúng tôi, bạn có thể lựa chọn và sắm cho mình 1 đôi giày ứng ý!!!</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-				@foreach($selling_products as $selling_product)
-						<div class="col-lg-3 col-md-6">
-							@include('frontend.home.components.product_item',['product'=> $selling_product])
-						</div>
-					@endforeach
-				</div>
-			</div>
-		</div>
+		
 	</section>
 @endsection
 

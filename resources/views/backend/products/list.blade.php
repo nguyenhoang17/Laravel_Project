@@ -113,7 +113,7 @@
                     @foreach($products as $key => $product)
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
-                      <td style= "color: blue"><a href ="{{--route('backend.categories.show',$category-> id)--}}">{{$product-> name}}</a></td>
+                      <td style= "color: blue"><a href ="{{route('frontend.product.detail',$product-> id)}}">{{$product-> name}}</a></td>
                       <td>
                       <img src="@if(!empty($product->image))
                                       {{$product->image->path}}
