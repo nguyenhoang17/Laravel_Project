@@ -29,7 +29,7 @@ class RegisterUserController extends Controller
             'address'=>['required','string'],
             'phone'=> ['required','min:11','numeric'],
             'password'=> ['required','confirmed',Rules\Password::defaults()],
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
         
         $data = $request  -> all();

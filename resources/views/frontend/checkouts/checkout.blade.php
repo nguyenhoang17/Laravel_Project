@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group" style="width:90%; color:#000;">
                             <h3>Thông tin cần thêm cho sản phẩm!</h3>
-                                <label style="margin-top: -28px;" for="exampleInputEmail1">Chú ý: <span style="color:red;">Hãy điền các thông tin như size giày bạn muốn chọn (từ 35 đến 47) hoặc kích thước chân, dép bạn thường xuyên đi để chúng tôi giúp bạn!!! <br><p style="color:red;"><b style="color:red;">Không điền thông tin thêm, mặc định là size 39.</b><p></span></label>
+                                <label style="margin-top: -28px;" for="exampleInputEmail1">Chú ý: <span style="color:red;">Hãy điền các thông tin như size giày bạn muốn chọn (từ 35 đến 47) hoặc kích thước chân, dép bạn thường xuyên đi để chúng tôi giúp bạn!!! <br><p style="color:red;"><b style="color:red;">Nếu chưa có thông tin, chúng tôi sẽ liên hệ với bạn qua số điện thoại.</b><p></span></label>
                                 <textarea style="width:100%; border-color:#ccc;" name="note" value="" id="text_area" rows="10" placeholder="Ví dụ: Sản phẩm 1-Size 38"></textarea>
                             
                             </div>

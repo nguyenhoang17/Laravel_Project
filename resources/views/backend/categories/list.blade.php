@@ -79,7 +79,7 @@
                     @foreach($categories as $key => $category)
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
-                      <td style= "color: blue"><a href ="{{--route('backend.categories.show',$category-> id)--}}">{{$category-> name}}</a></td>
+                      <td style= "color: blue"><a href ="{{route('frontend.product.category', $category->id)}}">{{$category-> name}}</a></td>
                       <td>{{$category-> created_at}}</td>
                       <td>{{$category-> updated_at}}</td>
                       <td style="display:flex;">

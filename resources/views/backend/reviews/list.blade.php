@@ -62,7 +62,7 @@
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
                       <td>{{$review->user-> name}}</td>
-                      <td>{{$review->product->name}}</td>
+                      <td><a href="{{route('frontend.product.detail', $review->product->id)}}">{{$review->product->name}}</a></td>
                       <td>{{$review->start_count}}</td>
                       <td>{{$review->content}}</td>
                       <td>{{$review->status_text}}</td>

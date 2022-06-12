@@ -22,7 +22,7 @@ class OrderController extends Controller
                 $orders_query = $orders_query -> whereBetween('created_at',[$date_from,$date_to]);
             }
 
-        $orders = $orders_query-> orderBy('status')->paginate(10);
+        $orders = $orders_query-> orderBy('created_at','DESC')->paginate(10);
         return view('backend.orders.list')->with([
             'orders'=>$orders,
         ]);

@@ -77,10 +77,11 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @if(!empty($brands))
                     @foreach($brands as $key => $brand)
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
-                      <td style= "color: blue">{{$brand-> name}}</a></td>
+                      <td style= "color: blue"><a href="{{route('frontend.product.brand', $brand->id)}}">{{$brand-> name}}</a></td>
                       <td><img width="100px;" src="{{$brand->image_url_full}}" alt=""></td>
                       <td>{{$brand-> created_at}}</td>
                       <td>{{$brand-> updated_at}}</td>
@@ -99,6 +100,7 @@
                   </tbody>
                 </table>
                 {{$brands -> links()}}
+                @endif
               </div>
               <!-- /.card-body -->
             </div>

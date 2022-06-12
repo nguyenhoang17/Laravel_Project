@@ -61,7 +61,7 @@
                     <tr>
                       <td>@php echo $key + 1 @endphp</td>
                       <td>{{$comment->user-> name}}</td>
-                      <td>{{$comment->product->name}}</td>
+                      <td><a href="{{route('frontend.product.detail', $comment->product->id)}}">{{$comment->product->name}}</a></td>
                       <td>{{$comment->content}}</td>
                       <td>{{$comment->status_text}}</td>
                       <td>{{$comment-> created_at}}</td>
